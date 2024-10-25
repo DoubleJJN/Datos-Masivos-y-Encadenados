@@ -8,6 +8,7 @@ body {
     background-attachment: fixed; /* Fija la imagen en su posición */
     margin: 0;
     padding: 0;
+    position: center;
 }
 
 h1 {
@@ -23,6 +24,10 @@ h1 {
 ul {
     list-style-type: none;
     padding: 0;
+    margin: 0 auto;
+    width: 80%; /* Ajusta el ancho del contenedor de los resultados */
+    max-width: 800px; /* Establece un ancho máximo */
+    min-height: 200px; /* Establece una altura mínima para evitar cambios bruscos */
 }
 
 li {
