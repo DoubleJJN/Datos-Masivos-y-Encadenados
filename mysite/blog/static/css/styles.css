@@ -1,0 +1,62 @@
+body {
+    font-family: "Roboto";
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), /* Capa semitransparente */
+        url('../images/imagen_viajes.jpg'); /* Imagen de fondo */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen en su posición */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #b642e7;
+    position: relative;
+    margin: 100 px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;/* Aumenta el grosor del texto */
+    font-size: 5em; /* Aumenta el tamaño del texto */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: rgba(100, 100, 100, 0.7); /* Color gris con 70% de opacidad */
+    margin: 10px auto; /* Centra el elemento y añade margen vertical */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ajusta el ancho del elemento */
+    max-width: 1000px; /* Establece un ancho máximo */
+}
+
+form {
+    display: flex;
+    justify-content: center; /* Centra el formulario horizontalmente */
+    margin: 20px 0; /* Añade margen vertical */
+}
+
+input[type="text"] {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid #b642e7;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #b642e7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
