@@ -13,7 +13,7 @@
     <header>
         <nav class="navbar">
             <a href="/" class="logo">Travelia</a>
-            <div>
+            <div class="nav-links">
                 <a href="#destinations">Destinations</a>
                 <a href="#activities">Activities</a>
                 <a href="#accommodations">Accommodations</a>
@@ -32,9 +32,15 @@
                 <input type="text" name="q" placeholder="Search for destinations..." required>
                 <button type="submit">Search</button>
             </form>
+            <button class="toggle-fields">More Options</button>
+            <div class="additional-fields">
+                <input type="number" name="num_people" placeholder="Number of people" required min="1">
+                <input type="date" name="arrival_date" required>
+                <input type="date" name="departure_date" required>
+            </div>
         </div>
 
-        <a href="#destinations" class="btn">Start Exploring</a>
+        {% comment %} <a href="#destinations" class="btn">Start Exploring</a> {% endcomment %}
     </section>
 
     <!-- Featured Destinations -->
@@ -69,6 +75,18 @@
     <footer>
         <p>&copy; 2024 Travelia. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for Collapsing Fields -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButton = document.querySelector(".toggle-fields"); // Botón para mostrar/ocultar
+            const additionalFields = document.querySelector(".additional-fields");
+        
+            toggleButton.addEventListener("click", function() {
+                additionalFields.classList.toggle("show");
+            });
+        });
+    </script>
 
 </body>
 </html>
