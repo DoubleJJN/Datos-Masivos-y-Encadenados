@@ -21,5 +21,6 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),  # Add this line to handle the empty path
-    path('blog/', include('blog.urls')),
+    path('search/', views.search_destinations, name='search_destinations'),
+    # path('blog/', include('blog.urls')),
 ]
