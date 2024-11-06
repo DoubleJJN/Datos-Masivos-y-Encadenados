@@ -1,24 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Prueba</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelia - Plan Your Perfect Trip</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to external CSS -->
 </head>
 <body>
-    <h1>Travel Blog</h1>
-    <form method="GET" action="{% url 'blog_posts' %}">
-        <input type="text" name="q" placeholder="Buscar...">
-        <button type="submit">Buscar</button>
-    </form>
-    <ul>
-        {% for post in posts %}
-            <li>
-                <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
-                <p>{{ post.content|truncatewords:30 }}</p>
-                <small>Publicado el: {{ post.created_at }}</small>
-            </li>
-        {% endfor %}
-    </ul>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="/" class="logo">Travelia</a>
+            <div class="nav-links">
+                <a href="#destinations">Destinations</a>
+                <a href="#activities">Activities</a>
+                <a href="#accommodations">Accommodations</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Explore the World with Travelia</h1>
+        <p>Your adventure begins here. Discover destinations, book activities, and plan your perfect trip!</p>
+
+        <!-- Search Bar within Hero Section -->
+        <div class="search-container">
+            <form method="GET" action="{% url 'search_destinations' %}">
+                <input type="text" name="q" placeholder="Search for destinations..." required>
+                <button type="submit">Search</button>
+            </form>
+            <button class="toggle-fields">More Options</button>
+            <div class="additional-fields">
+                <input type="number" name="num_people" placeholder="Number of people" required min="1">
+                <input type="date" name="arrival_date" required>
+                <input type="date" name="departure_date" required>
+            </div>
+        </div>
+
+        {% comment %} <a href="#destinations" class="btn">Start Exploring</a> {% endcomment %}
+    </section>
+
+    <!-- Featured Destinations -->
+    <section id="destinations" class="section">
+        <h2>Featured Destinations</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="{% static 'images/paris.jpg' %}" alt="Paris">
+                <div class="card-content">
+                    <h3>Paris, France</h3>
+                    <p>The City of Light, known for its art, fashion, and culture.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'images/tokyo.jpg' %}" alt="Tokyo">
+                <div class="card-content">
+                    <h3>Tokyo, Japan</h3>
+                    <p>A bustling city blending traditional culture with modern technology.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static 'images/newyork.jpg' %}" alt="New York">
+                <div class="card-content">
+                    <h3>New York, USA</h3>
+                    <p>The city that never sleeps, full of iconic landmarks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Travelia. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Collapsing Fields -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButton = document.querySelector(".toggle-fields"); // Botón para mostrar/ocultar
+            const additionalFields = document.querySelector(".additional-fields");
+        
+            toggleButton.addEventListener("click", function() {
+                additionalFields.classList.toggle("show");
+            });
+        });
+    </script>
+
 </body>
 </html>
