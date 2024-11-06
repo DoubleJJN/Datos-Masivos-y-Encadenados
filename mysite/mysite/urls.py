@@ -22,5 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),  # Add this line to handle the empty path
     path('search/', views.search_destinations, name='search_destinations'),
+    path('ollama/', views.ollama, name='ollama'),  # Add this line to handle the empty path
+    path('ollama/api/ollama_query/', views.ollama_query_api, name='query_ollama_api')   
     # path('blog/', include('blog.urls')),
 ]

@@ -1,14 +1,10 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import StreamingHttpResponse, JsonResponse
 from .models import Destination
-# from .models import Post
+from .utils import query_ollama
 
 def index(request):
-    # query = request.GET.get('q')
-    # if query:
-    #     posts = Post.objects.filter(title__icontains=query)  # Filtra los posts que contienen la consulta en el título
-    # else:
-    #     posts = Post.objects.all()
-    return render(request, 'blog/index.html')#, {'posts': posts})
+    return render(request, 'blog/index.html')
 
 def search_destinations(request):
     query = request.GET.get('q')
@@ -17,3 +13,12 @@ def search_destinations(request):
     else:
         results = Destination.objects.none()  # No results if no query
     return render(request, 'blog/destinations.html', {'results': results, 'query': query})
+
+def ollama(request):
+    return render(request, "blog/ollama.html")
+
+def ollama_query_api(request):
+    query = request.GET.get('query')
+    print(query)
+    context = query_ollama(query)
+    return JsonResponse(context)
