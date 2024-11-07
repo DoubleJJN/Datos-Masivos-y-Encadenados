@@ -14,7 +14,7 @@ body {
 h1 {
     color: #b642e7;
     position: relative;
-    margin: 100 px;
+    margin: 100px;
     padding: 10px;
     text-align: center;
     font-weight: bold;/* Aumenta el grosor del texto */
@@ -54,7 +54,10 @@ input[type="text"] {
     border: 2px solid #b642e7;
     border-radius: 5px;
 }
-
+button:hover {
+    background-color: #ffcc00;
+    color: white;
+}
 button {
     padding: 10px 20px;
     margin: 10px 0;
@@ -64,4 +67,23 @@ button {
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: aqua;
 }

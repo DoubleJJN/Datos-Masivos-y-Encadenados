@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Prueba</title>
+    <title>Travelia</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/icono.png' %}">
 </head>
 <body>
-    <h1>Travel Blog</h1>
+    <h1>Travelia</h1>
     <form method="GET" action="{% url 'blog_posts' %}">
         <input type="text" name="q" placeholder="Buscar...">
         <button type="submit">Buscar</button>
@@ -20,5 +21,8 @@
             </li>
         {% endfor %}
     </ul>
+    <footer>
+            <a href="{% url 'blog_posts' %}">Política de Privacidad</a>
+    </footer>
 </body>
 </html>
