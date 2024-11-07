@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta a Ollama</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
+    <style>
+        /* Estilos CSS básicos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #4a90e2;
+            font-size: 24px;
+            margin-bottom: 1em;
+        }
+        .result {
+            background-color: #f0f8ff;
+            padding: 1em;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            text-align: left;
+            margin-top: 1em;
+            color: #333;
+            font-family: "Courier New", Courier, monospace;
+        }
+        .error {
+            color: #ff4d4d;
+            font-weight: bold;
+            margin-top: 1em;
+        }
+        #loader {
+            display: none;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1.5s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+        }
+
+        function hideLoader() {
+            document.getElementById('loader').style.display = 'none';
+        }
+
+        function fetchOllamaQuery() {
+            showLoader();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('query');  // Valor predeterminado
+            console.log('Consulta:', query);
+            fetch(`api/ollama_query/?query=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    hideLoader();
+                    const resultContainer = document.querySelector('.result');
+                    if (data.error) {
+                        resultContainer.innerHTML = `<p class="error">${data.error}</p>`;
+                    } else {
+                        resultContainer.textContent = data.result;
+                    }
+                })
+                .catch(error => {
+                    hideLoader();
+                    console.error('Error al obtener la consulta:', error);
+                    document.querySelector('.result').innerHTML = `<p class="error">Error al obtener la consulta</p>`;
+                });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchOllamaQuery();
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado de la consulta a Ollama</h1>
+        <div id="loader"></div>
+        <div class="result"></div>
+    </div>
+</body>
+</html>
+

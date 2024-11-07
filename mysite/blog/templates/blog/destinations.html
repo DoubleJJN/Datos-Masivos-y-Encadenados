@@ -1,0 +1,46 @@
+<!-- search_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Travelia</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="/" class="logo">Travelia</a>
+            <div>
+                <a href="#destinations">Destinations</a>
+                <a href="#activities">Activities</a>
+                <a href="#accommodations">Accommodations</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="section">
+        <h2>Search Results for "{{ query }}"</h2>
+        <div class="grid">
+            {% for destination in results %}
+                <div class="card">
+                    <img src="{% static 'images/'|add:destination.image %}" alt="{{ destination.name }}">
+                    <div class="card-content">
+                        <h3>{{ destination.name }}</h3>
+                        <p>{{ destination.description }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No destinations found.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Travelia. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
