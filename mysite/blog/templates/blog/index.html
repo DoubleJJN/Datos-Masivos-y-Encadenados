@@ -9,17 +9,7 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    <header>
-        <nav class="navbar">
-            <a href="/" class="logo">Travelia</a>
-            <div class="nav-links">
-                <a href="#destinations">Destinations</a>
-                <a href="#activities">Activities</a>
-                <a href="#accommodations">Accommodations</a>
-            </div>
-        </nav>
-    </header>
+    {% include 'blog/sections/navbar.html' %}
 
     <!-- Hero Section -->
     <section class="hero">
@@ -72,9 +62,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Travelia. All rights reserved.</p>
-    </footer>
+    {% include 'blog/sections/footer.html' %}
 
     <!-- JavaScript for Collapsing Fields -->
     <script>

@@ -14,15 +14,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import include, path
 from blog import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='home'),  # Add this line to handle the empty path
-    path('search/', views.search_destinations, name='search_destinations'),
-    path('ollama/', views.ollama, name='ollama'),  # Add this line to handle the empty path
-    path('ollama/api/ollama_query/', views.ollama_query_api, name='query_ollama_api')   
+    path("admin/", admin.site.urls),
+    path("", views.index, name="home"),  # Add this line to handle the empty path
+    path("search/", views.search_destinations, name="search_destinations"),
+    path(
+        "ollama/", views.ollama, name="ollama"
+    ),  # Add this line to handle the empty path
+    path("ollama/api/ollama_query/", views.ollama_query_api, name="query_ollama_api"),
     # path('blog/', include('blog.urls')),
 ]

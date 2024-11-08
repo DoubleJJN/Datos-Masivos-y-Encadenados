@@ -4,54 +4,53 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0002_accommodation_activity_comment_destination_itinerary_and_more'),
+        ("blog", "0002_accommodation_activity_comment_destination_itinerary_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='itineraryactivity',
-            name='activity',
+            model_name="itineraryactivity",
+            name="activity",
         ),
         migrations.RemoveField(
-            model_name='comment',
-            name='activity',
+            model_name="comment",
+            name="activity",
         ),
         migrations.RemoveField(
-            model_name='comment',
-            name='accommodation',
+            model_name="comment",
+            name="accommodation",
         ),
         migrations.RemoveField(
-            model_name='comment',
-            name='destination',
+            model_name="comment",
+            name="destination",
         ),
         migrations.RemoveField(
-            model_name='comment',
-            name='user',
+            model_name="comment",
+            name="user",
         ),
         migrations.RemoveField(
-            model_name='itinerary',
-            name='destination',
+            model_name="itinerary",
+            name="destination",
         ),
         migrations.RemoveField(
-            model_name='itinerary',
-            name='user',
+            model_name="itinerary",
+            name="user",
         ),
         migrations.RemoveField(
-            model_name='itineraryactivity',
-            name='itinerary',
+            model_name="itineraryactivity",
+            name="itinerary",
         ),
         migrations.DeleteModel(
-            name='Activity',
+            name="Activity",
         ),
         migrations.DeleteModel(
-            name='Comment',
+            name="Comment",
         ),
         migrations.DeleteModel(
-            name='Itinerary',
+            name="Itinerary",
         ),
         migrations.DeleteModel(
-            name='ItineraryActivity',
+            name="ItineraryActivity",
         ),
     ]

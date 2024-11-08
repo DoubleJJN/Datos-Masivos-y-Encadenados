@@ -1,7 +1,7 @@
 /* Material Design Colors */
 :root {
     --primary-color: #6200ea;
-    --text-color: #ffffff;
+    --text-color: #ffffffb6;
     --shadow-color: rgba(0, 0, 0, 0.2);
     /*Ligh mode*/
     /* --primary-light: #9c47ff; */
@@ -27,7 +27,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--background-color);
-    color: #333;
+    color: var(--text-color);
     overflow-x: hidden;
 }
 
@@ -227,6 +227,11 @@ body {
     font-size: 1rem;
     color: #666;
     margin-bottom: 1rem;
+}
+
+.pre{
+    white-space: pre-wrap;
+    color: var(--text-color);
 }
 
 /* Footer */

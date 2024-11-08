@@ -7,30 +7,6 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
     <style>
         /* Estilos CSS básicos */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            color: #333;
-        }
-        .container {
-            background-color: #ffffff;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 600px;
-            text-align: center;
-        }
-        h1 {
-            color: #4a90e2;
-            font-size: 24px;
-            margin-bottom: 1em;
-        }
         .result {
             background-color: #f0f8ff;
             padding: 1em;
@@ -100,11 +76,13 @@
     </script>
 </head>
 <body>
+    {% include 'blog/sections/navbar.html' %}
     <div class="container">
         <h1>Resultado de la consulta a Ollama</h1>
         <div id="loader"></div>
         <div class="result"></div>
     </div>
+    {% include 'blog/sections/footer.html' %}
 </body>
 </html>
 

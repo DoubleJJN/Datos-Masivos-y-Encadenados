@@ -3,22 +3,29 @@ from django.http import StreamingHttpResponse, JsonResponse
 from .models import Destination
 from .utils import query_ollama
 
+
 def index(request):
-    return render(request, 'blog/index.html')
+    return render(request, "blog/index.html")
+
 
 def search_destinations(request):
-    query = request.GET.get('q')
+    query = request.GET.get("q")
     if query:
         results = Destination.objects.filter(name__icontains=query)  # Filter by name
     else:
         results = Destination.objects.none()  # No results if no query
-    return render(request, 'blog/destinations.html', {'results': results, 'query': query})
+    print(results)
+    return render(
+        request, "blog/destinations.html", {"results": results[0], "query": query}
+    )
+
 
 def ollama(request):
     return render(request, "blog/ollama.html")
 
+
 def ollama_query_api(request):
-    query = request.GET.get('query')
+    query = request.GET.get("query")
     print(query)
     context = query_ollama(query)
     return JsonResponse(context)

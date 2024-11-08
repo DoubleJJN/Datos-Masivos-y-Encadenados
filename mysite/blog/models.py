@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-#Country, city or main destination
+
+# Country, city or main destination
 class Destination(models.Model):
     name = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
@@ -14,7 +15,8 @@ class Destination(models.Model):
     def __str__(self):
         return f"{self.name}, {self.city}, {self.country}"
 
-#Hotels, hostels, airbnb, etc.
+
+# Hotels, hostels, airbnb, etc.
 class Accommodation(models.Model):
     name = models.CharField(max_length=100)
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
@@ -26,6 +28,7 @@ class Accommodation(models.Model):
 
     def __str__(self):
         return f"{self.name} in {self.destination}"
+
 
 # class Activity(models.Model):
 #     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
