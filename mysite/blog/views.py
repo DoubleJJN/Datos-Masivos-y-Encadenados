@@ -12,11 +12,13 @@ def search_destinations(request):
     query = request.GET.get("q")
     if query:
         results = Destination.objects.filter(name__icontains=query)  # Filter by name
+        results = results[0]
+        results.image_url = results.image_url.split(",")
     else:
         results = Destination.objects.none()  # No results if no query
     print(results)
     return render(
-        request, "blog/destinations.html", {"results": results[0], "query": query}
+        request, "blog/destinations.html", {"results": results, "query": query}
     )
 
 
