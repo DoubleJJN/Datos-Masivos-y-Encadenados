@@ -15,6 +15,7 @@ def get_text(responses):
             text += nresponse.get("response", "")
         except json.JSONDecodeError as e:
             print("Error parsing JSON:", response, e)
+    print(text)
     return text
 
 
@@ -28,6 +29,7 @@ def query_ollama(query):
     url = "http://localhost:11434/api/generate"
     headers = {"Content-Type": "application/json"}
     data = {"model": "phi3", "prompt": query, "streaming": "False"}
+    print(query)
     try:
         # Realizar la solicitud al servidor de Ollama
         data = json.dumps(data)
