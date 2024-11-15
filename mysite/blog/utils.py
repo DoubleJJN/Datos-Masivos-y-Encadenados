@@ -2,6 +2,7 @@ import requests
 import json
 from string import Template
 from .crawlers.destination_wikipedia import WikipediaCrawler
+from .crawlers.crawl_all_destinations import crawl_destinations
 
 query_template = Template(
     "Describe en dos frases en texto plano $destino para un turista que visita por primera vez."
@@ -51,3 +52,7 @@ def get_destination(destination):
     data = destination_crawler.get_data(destination)
     destination_crawler.save_to_db(data)
     return data
+
+def get_all_destinations():
+    crawl_destinations()
+    return "Crawling completed successfully."

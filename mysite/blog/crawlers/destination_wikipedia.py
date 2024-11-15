@@ -4,7 +4,7 @@ import unicodedata
 import json
 import re
 from .crawler import Crawler
-
+from ..env import API_KEY
 
 class WikipediaCrawler(Crawler):
     def __init__(self):
@@ -18,7 +18,10 @@ class WikipediaCrawler(Crawler):
             "currency": None,
             "language": None,
         }
-        infobox = soup.find("table", class_="infobox")
+        try:
+            infobox = soup.find("table", class_="infobox")
+        except AttributeError:
+            print(f"Error al obtener datos de {country}")
         if infobox:
             rows = infobox.find_all("tr")
             for row in rows:
@@ -29,10 +32,11 @@ class WikipediaCrawler(Crawler):
                 header_text = header.text.strip().lower()
                 if "moneda" in header_text:
                     data["currency"] = self.clean_text(value.text.strip())
-                if "idioma oficial" in header_text:
+                if "idioma" in header_text:
                     data["language"] = self.clean_text(value.text.strip())
                 if "huso horario" in header_text or "timezone" in header_text:
                     data["timezone"] = self.clean_text(value.text.strip())
+        # print("data retrieved")
         return data
 
     def clean_text(self, text: str) -> str:
@@ -44,6 +48,25 @@ class WikipediaCrawler(Crawler):
 
         return text
 
+    def get_imgs(self, place: str) -> str:
+        photos = []
+        URL = "https://api.pexels.com/v1/search"
+        headers = {
+            "Authorization": API_KEY
+        }
+        params = {
+            'query': place,
+            'per_page': 3
+        }
+        response = requests.get(URL, headers=headers, params=params)
+
+        if response.status_code == 200:
+            data = response.json()
+            if data['photos']:
+                for i, photo in enumerate(data['photos'], start=1):
+                    photos.append(photo['src']['original'])
+        return ",".join(photos)
+    
     def get_data(self, place: str) -> dict:
         """
         Extracts important information about a destination from a Wikipedia page.
@@ -60,7 +83,7 @@ class WikipediaCrawler(Crawler):
         # Extracting a brief description (first paragraph in content)
         description = soup.find("div", class_="mw-content-ltr")
         if description:
-            first_paragraph = description.find("p")
+            first_paragraph = description.find("p", recursive=False, class_=lambda x: x != 'mw-empty-elt' if x else True)
             if first_paragraph:
                 # Quitamos los saltos de línea, espacios en blanco y corchetes
                 text = re.sub(r"\s+", " ", first_paragraph.text).strip()
@@ -71,15 +94,6 @@ class WikipediaCrawler(Crawler):
         # Extracting the country, language, currency, and timezone from the infobox
         infobox = soup.find("table", class_="infobox")
         if infobox:
-            imgs = ",".join(
-                [
-                    "https:" + re.sub(r"\d+px", "1920px", img["src"])
-                    for img in infobox.find_all("img")
-                    if img["src"].endswith("jpg")
-                ]
-            )
-            if imgs:
-                data["image_url"] = imgs
             rows = infobox.find_all("tr")
             for row in rows:
                 header = row.find("th")
@@ -87,7 +101,15 @@ class WikipediaCrawler(Crawler):
                 if not header or not value:
                     continue
                 header_text = header.text.strip().lower()
-                if "país" in header_text:
-                    data["country"] = self.clean_text(value.text.strip())
+                if header_text.strip() == "país" or header_text.strip() == "• país":
+                    try:
+                        data["country"] = self.clean_text(value.find("a", recursive=False).text.strip())
+                    except Exception:
+                        print(f"Error al obtener el país de {place}")
+            if not data["country"]:
+                data["country"] = place
+                
+            data["image_url"] = self.get_imgs(place)
             data = data | self.get_country_data(data["country"])
+        # print(f"data retrieved from {place}")
         return data

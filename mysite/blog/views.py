@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import StreamingHttpResponse, JsonResponse
 from .models import Destination
-from .utils import query_ollama, get_destination
+from .utils import query_ollama, get_destination, get_all_destinations
 
 
 def index(request):
@@ -33,3 +33,7 @@ def ollama_query_api(request):
     # print(query)
     context = query_ollama(query)
     return JsonResponse(context)
+
+def get_all_destinations_v(request):
+    results = get_all_destinations()
+    return results

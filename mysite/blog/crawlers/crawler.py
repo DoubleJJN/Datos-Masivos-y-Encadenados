@@ -11,7 +11,6 @@ import json.decoder
 from typing import List, Dict
 from bs4 import BeautifulSoup
 from ..models import Destination
-import asyncio
 
 
 class Crawler:
@@ -20,10 +19,13 @@ class Crawler:
         self.base_url = base_url
 
     def crawl(self, params) -> BeautifulSoup:
+        if not params:
+            return None
         try:
             response = requests.get(self.base_url + params)
             response.raise_for_status()
             self.soup = self.get_soup(response.text)
+            # print(f"Fetching data from {self.base_url + params}...")
             return self.soup
         except requests.exceptions.RequestException as e:
             print(e)
@@ -48,6 +50,7 @@ class Crawler:
                 image_url=data.get("image_url"),
             )
             destination.save()
-            print(f"Destino {destination.name} guardado con éxito en la base de datos.")
+            # print(f"Destino {destination.name} guardado con éxito en la base de datos.")
         except Exception as e:
-            print(f"Error al guardar en la base de datos: {e}")
+            name = data.get("name")
+            print(f"Error al guardar {name} en la base de datos: {e}")

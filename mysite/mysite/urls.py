@@ -25,5 +25,6 @@ urlpatterns = [
     path("search/", views.search_destinations, name="search_destinations"),
     path("ollama/", views.ollama, name="ollama"),
     path("search/api/ollama_query/", views.ollama_query_api, name="query_ollama_api"),
+    path("search/api/get_all_destinations/", views.get_all_destinations_v, name="get_all_destinations"),
     # path('blog/', include('blog.urls')),
 ]
