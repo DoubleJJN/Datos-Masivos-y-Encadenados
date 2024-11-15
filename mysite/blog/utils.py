@@ -1,6 +1,7 @@
 import requests
 import json
 from string import Template
+from .crawlers.destination_wikipedia import WikipediaCrawler
 
 query_template = Template(
     "Describe en dos frases en texto plano $destino para un turista que visita por primera vez."
@@ -15,7 +16,7 @@ def get_text(responses):
             text += nresponse.get("response", "")
         except json.JSONDecodeError as e:
             print("Error parsing JSON:", response, e)
-    print(text)
+    # print(text)
     return text
 
 
@@ -43,3 +44,10 @@ def query_ollama(query):
         context = {"error": f"Error al conectar con Ollama: {e}"}
 
     return context
+
+
+def get_destination(destination):
+    destination_crawler = WikipediaCrawler()
+    data = destination_crawler.get_data(destination)
+    destination_crawler.save_to_db(data)
+    return data

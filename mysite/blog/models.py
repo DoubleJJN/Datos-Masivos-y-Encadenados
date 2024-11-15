@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 class Destination(models.Model):
     name = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
     description = models.TextField()
-    latitude = models.DecimalField(max_digits=9, decimal_places=6)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    currency = models.CharField(max_length=10)
+    language = models.CharField(max_length=50)
+    timezone = models.CharField(max_length=10)
     image_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
