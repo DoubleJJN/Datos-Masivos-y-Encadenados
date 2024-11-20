@@ -42,6 +42,7 @@ class Crawler:
         try:
             destination = Destination(
                 name=data.get("name"),
+                english_name=data.get("english_name"),
                 country=data.get("country"),
                 description=data.get("description"),
                 currency=data.get("currency"),

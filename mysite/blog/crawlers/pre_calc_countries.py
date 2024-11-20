@@ -1,3 +1,4 @@
+#This script crawls the wikipedia page of countries and extracts the name of the country, the sovereign state and the capital of each country.
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -25,5 +26,5 @@ def get_countries():
 
 paises = get_countries()
 
-with open('paises.json', 'w', encoding="utf-8") as file:
+with open('./blog/crawlers/data/paises.json', 'w', encoding="utf-8") as file:
     json.dump(paises, file, indent=4, ensure_ascii=False)

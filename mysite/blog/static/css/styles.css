@@ -56,7 +56,7 @@ body {
 
 /* Hero Section */
 .hero {
-    height: 70vh;
+    height: 50vh;
     background: linear-gradient(var(--primary-light), var(--primary-dark));
     color: var(--text-color);
     display: flex;

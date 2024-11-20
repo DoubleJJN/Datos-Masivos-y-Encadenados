@@ -1,0 +1,1070 @@
+{
+    "Afganistán": {
+        "soberan_state": "República Islámica de Afganistán",
+        "capital": "Kabul",
+        "english": "Afghanistan",
+        "english_capital": "Kabul"
+    },
+    "Albania": {
+        "soberan_state": "República de Albania",
+        "capital": "Tirana",
+        "english": "Albania",
+        "english_capital": "Tirana"
+    },
+    "Alemania": {
+        "soberan_state": "República Federal de Alemania",
+        "capital": "Berlín",
+        "english": "Germany",
+        "english_capital": "Berlin"
+    },
+    "Andorra": {
+        "soberan_state": "Principado de Andorra",
+        "capital": "Andorra la Vieja",
+        "english": "Andorra",
+        "english_capital": "Andorra la Vella"
+    },
+    "Angola": {
+        "soberan_state": "República de Angola",
+        "capital": "Luanda",
+        "english": "Angola",
+        "english_capital": "Luanda"
+    },
+    "Arabia Saudita": {
+        "soberan_state": "Reino de Arabia Saudita",
+        "capital": "Riad",
+        "english": "Saudi Arabia",
+        "english_capital": "Riyadh"
+    },
+    "Argelia": {
+        "soberan_state": "República Argelina Democrática y Popular",
+        "capital": "Argel",
+        "english": "Algeria",
+        "english_capital": "Algiers"
+    },
+    "Argentina": {
+        "soberan_state": "República Argentina",
+        "capital": "Buenos Aires",
+        "english": "Argentina",
+        "english_capital": "Buenos Aires"
+    },
+    "Armenia": {
+        "soberan_state": "República de Armenia",
+        "capital": "Ereván",
+        "english": "Armenia",
+        "english_capital": "Yerevan"
+    },
+    "Australia": {
+        "soberan_state": "Mancomunidad de Australia",
+        "capital": "Canberra",
+        "english": "Australia",
+        "english_capital": "Canberra"
+    },
+    "Austria": {
+        "soberan_state": "República de Austria",
+        "capital": "Viena",
+        "english": "Austria",
+        "english_capital": "Vienna"
+    },
+    "Azerbaiyán": {
+        "soberan_state": "República de Azerbaiyán",
+        "capital": "Bakú",
+        "english": "Azerbaijan",
+        "english_capital": "Baku"
+    },
+    "Bahamas": {
+        "soberan_state": "Mancomunidad de las Bahamas",
+        "capital": "Nasáu",
+        "english": "Bahamas",
+        "english_capital": "Nassau"
+    },
+    "Bangladés": {
+        "soberan_state": "República Popular de Bangladés",
+        "capital": "Daca",
+        "english": "Bangladesh",
+        "english_capital": "Dhaka"
+    },
+    "Baréin": {
+        "soberan_state": "Reino de Baréin",
+        "capital": "Manama",
+        "english": "Bahrain",
+        "english_capital": "Manama"
+    },
+    "Bélgica": {
+        "soberan_state": "Reino de Bélgica",
+        "capital": "Bruselas",
+        "english": "Belgium",
+        "english_capital": "Brussels"
+    },
+    "Benín": {
+        "soberan_state": "República de Benín",
+        "capital": "Porto Novo",
+        "english": "Benin",
+        "english_capital": "Porto-Novo"
+    },
+    "Bielorrusia": {
+        "soberan_state": "República de Bielorrusia",
+        "capital": "Minsk",
+        "english": "Belarus",
+        "english_capital": "Minsk"
+    },
+    "Birmania": {
+        "soberan_state": "República de la Unión de Myanmar",
+        "capital": "Naipyidó",
+        "english": "Myanmar",
+        "english_capital": "Naypyidaw"
+    },
+    "Bolivia": {
+        "soberan_state": "Estado Plurinacional de Bolivia",
+        "capital": "Sucre",
+        "english": "Bolivia",
+        "english_capital": "Sucre"
+    },
+    "Bosnia y Herzegovina": {
+        "soberan_state": "Bosnia y Herzegovina",
+        "capital": "Sarajevo",
+        "english": "Bosnia and Herzegovina",
+        "english_capital": "Sarajevo"
+    },
+    "Botsuana": {
+        "soberan_state": "República de Botsuana",
+        "capital": "Gaborone",
+        "english": "Botswana",
+        "english_capital": "Gaborone"
+    },
+    "Brasil": {
+        "soberan_state": "República Federativa del Brasil",
+        "capital": "Brasilia",
+        "english": "Brazil",
+        "english_capital": "Brasília"
+    },
+    "Brunéi": {
+        "soberan_state": "Estado de Brunéi Darussalam",
+        "capital": "Bandar Seri Begawan",
+        "english": "Brunei",
+        "english_capital": "Bandar Seri Begawan"
+    },
+    "Bulgaria": {
+        "soberan_state": "República de Bulgaria",
+        "capital": "Sofía",
+        "english": "Bulgaria",
+        "english_capital": "Sofia"
+    },
+    "Burundi": {
+        "soberan_state": "República de Burundi",
+        "capital": "Gitega ",
+        "english": "Burundi",
+        "english_capital": "Gitega"
+    },
+    "Bután": {
+        "soberan_state": "Reino de Bután",
+        "capital": "Timbu",
+        "english": "Bhutan",
+        "english_capital": "Thimphu"
+    },
+    "Cabo Verde": {
+        "soberan_state": "República de Cabo Verde",
+        "capital": "Praia",
+        "english": "Cape Verde",
+        "english_capital": "Praia"
+    },
+    "Camboya": {
+        "soberan_state": "Reino de Camboya",
+        "capital": "Nom Pen",
+        "english": "Cambodia",
+        "english_capital": "Phnom Penh"
+    },
+    "Camerún": {
+        "soberan_state": "República de Camerún",
+        "capital": "Yaundé",
+        "english": "Cameroon",
+        "english_capital": "Yaoundé"
+    },
+    "Catar": {
+        "soberan_state": "Estado de Catar",
+        "capital": "Doha",
+        "english": "Qatar",
+        "english_capital": "Doha"
+    },
+    "Chad": {
+        "soberan_state": "República del Chad",
+        "capital": "Yamena",
+        "english": "Chad",
+        "english_capital": "N'Djamena"
+    },
+    "República Checa": {
+        "soberan_state": "República Checa",
+        "capital": "Praga",
+        "english": "Czech Republic",
+        "english_capital": "Prague"
+    },
+    "Chile": {
+        "soberan_state": "República de Chile",
+        "capital": "Santiago de Chile",
+        "english": "Chile",
+        "english_capital": "Santiago"
+    },
+    "China": {
+        "soberan_state": "República Popular China",
+        "capital": "Pekín",
+        "english": "China",
+        "english_capital": "Beijing"
+    },
+    "Chipre": {
+        "soberan_state": "República de Chipre",
+        "capital": "Nicosia",
+        "english": "Cyprus",
+        "english_capital": "Nicosia"
+    },
+    "Colombia": {
+        "soberan_state": "República de Colombia",
+        "capital": "Bogotá",
+        "english": "Colombia",
+        "english_capital": "Bogotá"
+    },
+    "Comoras": {
+        "soberan_state": "Unión de las Comoras",
+        "capital": "Moroni",
+        "english": "Comoros",
+        "english_capital": "Moroni"
+    },
+    "Corea del Norte": {
+        "soberan_state": "República Popular Democrática de Corea",
+        "capital": "Pionyang",
+        "english": "North Korea",
+        "english_capital": "Pyongyang"
+    },
+    "Corea del Sur": {
+        "soberan_state": "República de Corea",
+        "capital": "Seúl",
+        "english": "South Korea",
+        "english_capital": "Seoul"
+    },
+    "Costa de Marfil": {
+        "soberan_state": "República de Costa de Marfil",
+        "capital": "Yamusukro ",
+        "english": "Ivory Coast",
+        "english_capital": "Yamoussoukro"
+    },
+    "Costa Rica": {
+        "soberan_state": "República de Costa Rica",
+        "capital": "San José",
+        "english": "Costa Rica",
+        "english_capital": "San José"
+    },
+    "Croacia": {
+        "soberan_state": "República de Croacia",
+        "capital": "Zagreb",
+        "english": "Croatia",
+        "english_capital": "Zagreb"
+    },
+    "Cuba": {
+        "soberan_state": "República de Cuba",
+        "capital": "La Habana",
+        "english": "Cuba",
+        "english_capital": "Havana"
+    },
+    "Dinamarca": {
+        "soberan_state": "Reino de Dinamarca",
+        "capital": "Copenhague",
+        "english": "Denmark",
+        "english_capital": "Copenhagen"
+    },
+    "Dominica": {
+        "soberan_state": "Mancomunidad de Dominica",
+        "capital": "Roseau",
+        "english": "Dominica",
+        "english_capital": "Roseau"
+    },
+    "Ecuador": {
+        "soberan_state": "República del Ecuador",
+        "capital": "Quito",
+        "english": "Ecuador",
+        "english_capital": "Quito"
+    },
+    "Egipto": {
+        "soberan_state": "República Árabe de Egipto",
+        "capital": "El Cairo",
+        "english": "Egypt",
+        "english_capital": "Cairo"
+    },
+    "El Salvador": {
+        "soberan_state": "República de El Salvador",
+        "capital": "San Salvador",
+        "english": "El Salvador",
+        "english_capital": "San Salvador"
+    },
+    "Eritrea": {
+        "soberan_state": "Estado de Eritrea",
+        "capital": "Asmara",
+        "english": "Eritrea",
+        "english_capital": "Asmara"
+    },
+    "Eslovaquia": {
+        "soberan_state": "República Eslovaca",
+        "capital": "Bratislava",
+        "english": "Slovakia",
+        "english_capital": "Bratislava"
+    },
+    "Eslovenia": {
+        "soberan_state": "República de Eslovenia",
+        "capital": "Liubliana",
+        "english": "Slovenia",
+        "english_capital": "Ljubljana"
+    },
+    "España": {
+        "soberan_state": "Reino de España",
+        "capital": "Madrid",
+        "english": "Spain",
+        "english_capital": "Madrid"
+    },
+    "Estados Unidos": {
+        "soberan_state": "Estados Unidos de América",
+        "capital": "Washington D.C.",
+        "english": "United States of America",
+        "english_capital": "Washington D.C."
+    },
+    "Estonia": {
+        "soberan_state": "República de Estonia",
+        "capital": "Tallin",
+        "english": "Estonia",
+        "english_capital": "Tallinn"
+    },
+    "Etiopía": {
+        "soberan_state": "República Democrática Federal de Etiopía",
+        "capital": "Adís Abeba",
+        "english": "Ethiopia",
+        "english_capital": "Addis Ababa"
+    },
+    "Filipinas": {
+        "soberan_state": "República de Filipinas",
+        "capital": "Manila",
+        "english": "Philippines",
+        "english_capital": "Manila"
+    },
+    "Finlandia": {
+        "soberan_state": "República de Finlandia",
+        "capital": "Helsinki",
+        "english": "Finland",
+        "english_capital": "Helsinki"
+    },
+    "Fiyi": {
+        "soberan_state": "República de Fiyi",
+        "capital": "Suva",
+        "english": "Fiji",
+        "english_capital": "Suva"
+    },
+    "Francia": {
+        "soberan_state": "República Francesa",
+        "capital": "París",
+        "english": "France",
+        "english_capital": "Paris"
+    },
+    "Gabón": {
+        "soberan_state": "República Gabonesa",
+        "capital": "Libreville",
+        "english": "Gabon",
+        "english_capital": "Libreville"
+    },
+    "Gambia": {
+        "soberan_state": "República del Gambia",
+        "capital": "Banjul",
+        "english": "Gambia",
+        "english_capital": "Banjul"
+    },
+    "Ghana": {
+        "soberan_state": "República de Ghana",
+        "capital": "Acra",
+        "english": "Ghana",
+        "english_capital": "Accra"
+    },
+    "Grecia": {
+        "soberan_state": "República Helénica",
+        "capital": "Atenas",
+        "english": "Greece",
+        "english_capital": "Athens"
+    },
+    "Guatemala": {
+        "soberan_state": "República de Guatemala",
+        "capital": "Ciudad de Guatemala",
+        "english": "Guatemala",
+        "english_capital": "Guatemala City"
+    },
+    "Guinea": {
+        "soberan_state": "República de Guinea",
+        "capital": "Conakri",
+        "english": "Guinea",
+        "english_capital": "Conakry"
+    },
+    "Guinea-Bisáu": {
+        "soberan_state": "República de Guinea-Bisáu",
+        "capital": "Bisáu",
+        "english": "Guinea-Bissau",
+        "english_capital": "Bissau"
+    },
+    "Guinea Ecuatorial": {
+        "soberan_state": "República de Guinea Ecuatorial",
+        "capital": "Malabo",
+        "english": "Equatorial Guinea",
+        "english_capital": "Malabo"
+    },
+    "Guyana": {
+        "soberan_state": "República Cooperativa de Guyana",
+        "capital": "Georgetown",
+        "english": "Guyana",
+        "english_capital": "Georgetown"
+    },
+    "Haití": {
+        "soberan_state": "República de Haití",
+        "capital": "Puerto Príncipe",
+        "english": "Haiti",
+        "english_capital": "Port-au-Prince"
+    },
+    "Honduras": {
+        "soberan_state": "República de Honduras",
+        "capital": "Tegucigalpa",
+        "english": "Honduras",
+        "english_capital": "Tegucigalpa"
+    },
+    "India": {
+        "soberan_state": "República de la India",
+        "capital": "Nueva Delhi",
+        "english": "India",
+        "english_capital": "New Delhi"
+    },
+    "Indonesia": {
+        "soberan_state": "República de Indonesia",
+        "capital": "Yakarta",
+        "english": "Indonesia",
+        "english_capital": "Jakarta"
+    },
+    "Irak": {
+        "soberan_state": "República de Irak",
+        "capital": "Bagdad",
+        "english": "Iraq",
+        "english_capital": "Baghdad"
+    },
+    "Irán": {
+        "soberan_state": "República Islámica de Irán",
+        "capital": "Teherán",
+        "english": "Iran",
+        "english_capital": "Tehran"
+    },
+    "Irlanda": {
+        "soberan_state": "República de Irlanda",
+        "capital": "Dublín",
+        "english": "Ireland",
+        "english_capital": "Dublin"
+    },
+    "Islandia": {
+        "soberan_state": "República de Islandia",
+        "capital": "Reikiavik",
+        "english": "Iceland",
+        "english_capital": "Reykjavik"
+    },
+    "Israel": {
+        "soberan_state": "Estado de Israel",
+        "capital": "Jerusalén",
+        "english": "Israel",
+        "english_capital": "Jerusalem"
+    },
+    "Italia": {
+        "soberan_state": "República Italiana",
+        "capital": "Roma",
+        "english": "Italy",
+        "english_capital": "Rome"
+    },
+    "Japón": {
+        "soberan_state": "Estado del Japón",
+        "capital": "Tokio",
+        "english": "Japan",
+        "english_capital": "Tokyo"
+    },
+    "Jordania": {
+        "soberan_state": "Reino Hachemita de Jordania",
+        "capital": "Amán",
+        "english": "Jordan",
+        "english_capital": "Amman"
+    },
+    "Kazajistán": {
+        "soberan_state": "República de Kazajistán",
+        "capital": "Astaná",
+        "english": "Kazakhstan",
+        "english_capital": "Astana"
+    },
+    "Kenia": {
+        "soberan_state": "República de Kenia",
+        "capital": "Nairobi",
+        "english": "Kenya",
+        "english_capital": "Nairobi"
+    },
+    "Kirguistán": {
+        "soberan_state": "República Kirguisa",
+        "capital": "Biskek",
+        "english": "Kyrgyzstan",
+        "english_capital": "Bishkek"
+    },
+    "Kiribati": {
+        "soberan_state": "República de Kiribati",
+        "capital": "Tarawa Sur",
+        "english": "Kiribati",
+        "english_capital": "South Tarawa"
+    },
+    "Kuwait": {
+        "soberan_state": "Estado de Kuwait",
+        "capital": "Ciudad de Kuwait",
+        "english": "Kuwait",
+        "english_capital": "Kuwait City"
+    },
+    "Laos": {
+        "soberan_state": "República Democrática Popular Lao",
+        "capital": "Vientián",
+        "english": "Laos",
+        "english_capital": "Vientiane"
+    },
+    "Lesoto": {
+        "soberan_state": "Reino de Lesoto",
+        "capital": "Maseru",
+        "english": "Lesotho",
+        "english_capital": "Maseru"
+    },
+    "Letonia": {
+        "soberan_state": "República de Letonia",
+        "capital": "Riga",
+        "english": "Latvia",
+        "english_capital": "Riga"
+    },
+    "Líbano": {
+        "soberan_state": "República Libanesa",
+        "capital": "Beirut",
+        "english": "Lebanon",
+        "english_capital": "Beirut"
+    },
+    "Liberia": {
+        "soberan_state": "República de Liberia",
+        "capital": "Monrovia",
+        "english": "Liberia",
+        "english_capital": "Monrovia"
+    },
+    "Libia": {
+        "soberan_state": "Estado de Libia",
+        "capital": "Trípoli",
+        "english": "Libya",
+        "english_capital": "Tripoli"
+    },
+    "Liechtenstein": {
+        "soberan_state": "Principado de Liechtenstein",
+        "capital": "Vaduz",
+        "english": "Liechtenstein",
+        "english_capital": "Vaduz"
+    },
+    "Lituania": {
+        "soberan_state": "República de Lituania",
+        "capital": "Vilna",
+        "english": "Lithuania",
+        "english_capital": "Vilnius"
+    },
+    "Luxemburgo": {
+        "soberan_state": "Gran Ducado de Luxemburgo",
+        "capital": "Ciudad de Luxemburgo",
+        "english": "Luxembourg",
+        "english_capital": "Luxembourg City"
+    },
+    "Macedonia del Norte": {
+        "soberan_state": "República de Macedonia del Norte",
+        "capital": "Skopie",
+        "english": "North Macedonia",
+        "english_capital": "Skopje"
+    },
+    "Madagascar": {
+        "soberan_state": "República de Madagascar",
+        "capital": "Antananarivo",
+        "english": "Madagascar",
+        "english_capital": "Antananarivo"
+    },
+    "Malasia": {
+        "soberan_state": "Federación de Malasia",
+        "capital": "Kuala Lumpur",
+        "english": "Malaysia",
+        "english_capital": "Kuala Lumpur"
+    },
+    "Malaui": {
+        "soberan_state": "República de Malaui",
+        "capital": "Lilongüe",
+        "english": "Malawi",
+        "english_capital": "Lilongwe"
+    },
+    "Maldivas": {
+        "soberan_state": "República de Maldivas",
+        "capital": "Malé",
+        "english": "Maldives",
+        "english_capital": "Malé"
+    },
+    "Mali": {
+        "soberan_state": "República de Malí",
+        "capital": "Bamako",
+        "english": "Mali",
+        "english_capital": "Bamako"
+    },
+    "Malta": {
+        "soberan_state": "República de Malta",
+        "capital": "La Valeta",
+        "english": "Malta",
+        "english_capital": "Valletta"
+    },
+    "Marruecos": {
+        "soberan_state": "Reino de Marruecos",
+        "capital": "Rabat",
+        "english": "Morocco",
+        "english_capital": "Rabat"
+    },
+    "Islas Marshall": {
+        "soberan_state": "República de las Islas Marshall",
+        "capital": "Majuro",
+        "english": "Marshall Islands",
+        "english_capital": "Majuro"
+    },
+    "Mauricio": {
+        "soberan_state": "República de Mauricio",
+        "capital": "Port Louis",
+        "english": "Mauritius",
+        "english_capital": "Port Louis"
+    },
+    "Mauritania": {
+        "soberan_state": "República Islámica de Mauritania",
+        "capital": "Nuakchot",
+        "english": "Mauritania",
+        "english_capital": "Nouakchott"
+    },
+    "México": {
+        "soberan_state": "Estados Unidos Mexicanos",
+        "capital": "Ciudad de México",
+        "english": "Mexico",
+        "english_capital": "Mexico City"
+    },
+    "Micronesia": {
+        "soberan_state": "Estados Federados de Micronesia",
+        "capital": "Palikir",
+        "english": "Micronesia",
+        "english_capital": "Palikir"
+    },
+    "Moldavia": {
+        "soberan_state": "República de Moldavia",
+        "capital": "Chisináu",
+        "english": "Moldova",
+        "english_capital": "Chisinau"
+    },
+    "Mónaco": {
+        "soberan_state": "Principado de Mónaco",
+        "capital": "Mónaco-Ville",
+        "english": "Monaco",
+        "english_capital": "Monaco-Ville"
+    },
+    "Mongolia": {
+        "soberan_state": "Mongolia",
+        "capital": "Ulán Bator",
+        "english": "Mongolia",
+        "english_capital": "Ulaanbaatar"
+    },
+    "Montenegro": {
+        "soberan_state": "República de Montenegro",
+        "capital": "Podgorica",
+        "english": "Montenegro",
+        "english_capital": "Podgorica"
+    },
+    "Mozambique": {
+        "soberan_state": "República de Mozambique",
+        "capital": "Maputo",
+        "english": "Mozambique",
+        "english_capital": "Maputo"
+    },
+    "Namibia": {
+        "soberan_state": "República de Namibia",
+        "capital": "Windhoek",
+        "english": "Namibia",
+        "english_capital": "Windhoek"
+    },
+    "Nauru": {
+        "soberan_state": "República de Nauru",
+        "capital": "Yaren",
+        "english": "Nauru",
+        "english_capital": "Yaren"
+    },
+    "Nepal": {
+        "soberan_state": "República Federal Democrática de Nepal",
+        "capital": "Katmandú",
+        "english": "Nepal",
+        "english_capital": "Kathmandu"
+    },
+    "Nicaragua": {
+        "soberan_state": "República de Nicaragua",
+        "capital": "Managua",
+        "english": "Nicaragua",
+        "english_capital": "Managua"
+    },
+    "Níger": {
+        "soberan_state": "República del Níger",
+        "capital": "Niamey",
+        "english": "Niger",
+        "english_capital": "Niamey"
+    },
+    "Nigeria": {
+        "soberan_state": "República Federal de Nigeria",
+        "capital": "Abuya",
+        "english": "Nigeria",
+        "english_capital": "Abuja"
+    },
+    "Noruega": {
+        "soberan_state": "Reino de Noruega",
+        "capital": "Oslo",
+        "english": "Norway",
+        "english_capital": "Oslo"
+    },
+    "Nueva Zelanda": {
+        "soberan_state": "Nueva Zelanda",
+        "capital": "Wellington",
+        "english": "New Zealand",
+        "english_capital": "Wellington"
+    },
+    "Omán": {
+        "soberan_state": "Sultanato de Omán",
+        "capital": "Mascate",
+        "english": "Oman",
+        "english_capital": "Muscat"
+    },
+    "Países Bajos": {
+        "soberan_state": "Reino de los Países Bajos",
+        "capital": "Ámsterdam",
+        "english": "Netherlands",
+        "english_capital": "Amsterdam"
+    },
+    "Pakistán": {
+        "soberan_state": "República Islámica de Pakistán",
+        "capital": "Islamabad",
+        "english": "Pakistan",
+        "english_capital": "Islamabad"
+    },
+    "Palaos": {
+        "soberan_state": "República de Palaos",
+        "capital": "Ngerulmud",
+        "english": "Palau",
+        "english_capital": "Ngerulmud"
+    },
+    "Palestina": {
+        "soberan_state": "Estado de Palestina",
+        "capital": "Ramala",
+        "english": "Palestine",
+        "english_capital": "Ramallah"
+    },
+    "Panamá": {
+        "soberan_state": "República de Panamá",
+        "capital": "Ciudad de Panamá",
+        "english": "Panama",
+        "english_capital": "Panama City"
+    },
+    "Papúa Nueva Guinea": {
+        "soberan_state": "Estado Independiente de Papúa Nueva Guinea",
+        "capital": "Puerto Moresby",
+        "english": "Papua New Guinea",
+        "english_capital": "Port Moresby"
+    },
+    "Paraguay": {
+        "soberan_state": "República del Paraguay",
+        "capital": "Asunción",
+        "english": "Paraguay",
+        "english_capital": "Asunción"
+    },
+    "Perú": {
+        "soberan_state": "República del Perú",
+        "capital": "Lima",
+        "english": "Peru",
+        "english_capital": "Lima"
+    },
+    "Polonia": {
+        "soberan_state": "República de Polonia",
+        "capital": "Varsovia",
+        "english": "Poland",
+        "english_capital": "Warsaw"
+    },
+    "Portugal": {
+        "soberan_state": "República Portuguesa",
+        "capital": "Lisboa",
+        "english": "Portugal",
+        "english_capital": "Lisbon"
+    },
+    "Reino Unido": {
+        "soberan_state": "Reino Unido de Gran Bretaña e Irlanda del Norte",
+        "capital": "Londres",
+        "english": "United Kingdom",
+        "english_capital": "London"
+    },
+    "Ruanda": {
+        "soberan_state": "República de Ruanda",
+        "capital": "Kigali",
+        "english": "Rwanda",
+        "english_capital": "Kigali"
+    },
+    "Rumania": {
+        "soberan_state": "Rumania",
+        "capital": "Bucarest",
+        "english": "Romania",
+        "english_capital": "Bucharest"
+    },
+    "Rusia": {
+        "soberan_state": "Federación de Rusia",
+        "capital": "Moscú",
+        "english": "Russia",
+        "english_capital": "Moscow"
+    },
+    "Islas Salomón": {
+        "soberan_state": "Islas Salomón",
+        "capital": "Honiara",
+        "english": "Solomon Islands",
+        "english_capital": "Honiara"
+    },
+    "Samoa": {
+        "soberan_state": "Estado Independiente de Samoa",
+        "capital": "Apia",
+        "english": "Samoa",
+        "english_capital": "Apia"
+    },
+    "San Cristóbal y Nieves": {
+        "soberan_state": "Federación de San Cristóbal y Nieves",
+        "capital": "Basseterre",
+        "english": "Saint Kitts and Nevis",
+        "english_capital": "Basseterre"
+    },
+    "San Marino": {
+        "soberan_state": "Serenísima República de San Marino",
+        "capital": "Ciudad de San Marino",
+        "english": "San Marino",
+        "english_capital": "San Marino"
+    },
+    "San Vicente y las Granadinas": {
+        "soberan_state": "San Vicente y las Granadinas",
+        "capital": "Kingstown",
+        "english": "Saint Vincent and the Grenadines",
+        "english_capital": "Kingstown"
+    },
+    "Santo Tomé y Príncipe": {
+        "soberan_state": "República Democrática de Santo Tomé y Príncipe",
+        "capital": "Santo Tomé",
+        "english": "Sao Tome and Principe",
+        "english_capital": "São Tomé"
+    },
+    "Senegal": {
+        "soberan_state": "República de Senegal",
+        "capital": "Dakar",
+        "english": "Senegal",
+        "english_capital": "Dakar"
+    },
+    "Serbia": {
+        "soberan_state": "República de Serbia",
+        "capital": "Belgrado",
+        "english": "Serbia",
+        "english_capital": "Belgrade"
+    },
+    "Seychelles": {
+        "soberan_state": "República de las Seychelles",
+        "capital": "Victoria",
+        "english": "Seychelles",
+        "english_capital": "Victoria"
+    },
+    "Sierra Leona": {
+        "soberan_state": "República de Sierra Leona",
+        "capital": "Freetown",
+        "english": "Sierra Leone",
+        "english_capital": "Freetown"
+    },
+    "Singapur": {
+        "soberan_state": "República de Singapur",
+        "capital": "Ciudad de Singapur",
+        "english": "Singapore",
+        "english_capital": "Singapore"
+    },
+    "Siria": {
+        "soberan_state": "República Árabe Siria",
+        "capital": "Damasco",
+        "english": "Syria",
+        "english_capital": "Damascus"
+    },
+    "Somalia": {
+        "soberan_state": "República Federal de Somalia",
+        "capital": "Mogadiscio",
+        "english": "Somalia",
+        "english_capital": "Mogadishu"
+    },
+    "Sri Lanka": {
+        "soberan_state": "República Democrática Socialista de Sri Lanka",
+        "capital": "Sri Jayawardenapura",
+        "english": "Sri Lanka",
+        "english_capital": "Sri Jayawardenepura Kotte"
+    },
+    "Suazilandia": {
+        "soberan_state": "Reino de Suazilandia",
+        "capital": "Mbabane",
+        "english": "Swaziland",
+        "english_capital": "Mbabane"
+    },
+    "Sudáfrica": {
+        "soberan_state": "República de Sudáfrica",
+        "capital": "Ciudad del Cabo",
+        "english": "South Africa",
+        "english_capital": "Cape Town"
+    },
+    "Sudán": {
+        "soberan_state": "República del Sudán",
+        "capital": "Jartum",
+        "english": "Sudan",
+        "english_capital": "Khartoum"
+    },
+    "Sudán del Sur": {
+        "soberan_state": "República de Sudán del Sur",
+        "capital": "Juba",
+        "english": "South Sudan",
+        "english_capital": "Juba"
+    },
+    "Suecia": {
+        "soberan_state": "Reino de Suecia",
+        "capital": "Estocolmo",
+        "english": "Sweden",
+        "english_capital": "Stockholm"
+    },
+    "Suiza": {
+        "soberan_state": "Confederación Suiza",
+        "capital": "Berna",
+        "english": "Switzerland",
+        "english_capital": "Bern"
+    },
+    "Surinam": {
+        "soberan_state": "República de Surinam",
+        "capital": "Paramaribo",
+        "english": "Suriname",
+        "english_capital": "Paramaribo"
+    },
+    "Tailandia": {
+        "soberan_state": "Reino de Tailandia",
+        "capital": "Bangkok",
+        "english": "Thailand",
+        "english_capital": "Bangkok"
+    },
+    "Tanzania": {
+        "soberan_state": "República Unida de Tanzania",
+        "capital": "Dodoma",
+        "english": "Tanzania",
+        "english_capital": "Dodoma"
+    },
+    "Tayikistán": {
+        "soberan_state": "República de Tayikistán",
+        "capital": "Dusambé",
+        "english": "Tajikistan",
+        "english_capital": "Dushanbe"
+    },
+    "Timor Oriental": {
+        "soberan_state": "República Democrática de Timor Oriental",
+        "capital": "Dili",
+        "english": "East Timor",
+        "english_capital": "Dili"
+    },
+    "Togo": {
+        "soberan_state": "República Togolesa",
+        "capital": "Lomé",
+        "english": "Togo",
+        "english_capital": "Lomé"
+    },
+    "Tonga": {
+        "soberan_state": "Reino de Tonga",
+        "capital": "Nukualofa",
+        "english": "Tonga",
+        "english_capital": "Nuku'alofa"
+    },
+    "Trinidad y Tobago": {
+        "soberan_state": "República de Trinidad y Tobago",
+        "capital": "Puerto España",
+        "english": "Trinidad and Tobago",
+        "english_capital": "Port of Spain"
+    },
+    "Túnez": {
+        "soberan_state": "República Tunecina",
+        "capital": "Ciudad de Túnez",
+        "english": "Tunisia",
+        "english_capital": "Tunis"
+    },
+    "Turkmenistán": {
+        "soberan_state": "República de Turkmenistán",
+        "capital": "Asjabad",
+        "english": "Turkmenistan",
+        "english_capital": "Ashgabat"
+    },
+    "Turquía": {
+        "soberan_state": "República de Turquía",
+        "capital": "Ankara",
+        "english": "Turkey",
+        "english_capital": "Ankara"
+    },
+    "Uganda": {
+        "soberan_state": "República de Uganda",
+        "capital": "Kampala",
+        "english": "Uganda",
+        "english_capital": "Kampala"
+    },
+    "Uruguay": {
+        "soberan_state": "República Oriental del Uruguay",
+        "capital": "Montevideo",
+        "english": "Uruguay",
+        "english_capital": "Montevideo"
+    },
+    "Uzbekistán": {
+        "soberan_state": "República de Uzbekistán",
+        "capital": "Taskent",
+        "english": "Uzbekistan",
+        "english_capital": "Tashkent"
+    },
+    "Vanuatu": {
+        "soberan_state": "República de Vanuatu",
+        "capital": "Port Vila",
+        "english": "Vanuatu",
+        "english_capital": "Port Vila"
+    },
+    "Ciudad del Vaticano": {
+        "soberan_state": "Estado de la Ciudad del Vaticano",
+        "capital": "Ciudad del Vaticano",
+        "english": "Vatican City",
+        "english_capital": "Vatican City"
+    },
+    "Venezuela": {
+        "soberan_state": "República Bolivariana de Venezuela",
+        "capital": "Caracas",
+        "english": "Venezuela",
+        "english_capital": "Caracas"
+    },
+    "Vietnam": {
+        "soberan_state": "República Socialista de Vietnam",
+        "capital": "Hanói",
+        "english": "Vietnam",
+        "english_capital": "Hanoi"
+    },
+    "Yemen": {
+        "soberan_state": "República de Yemen",
+        "capital": "Saná",
+        "english": "Yemen",
+        "english_capital": "Sana'a"
+    },
+    "Yibuti": {
+        "soberan_state": "República de Yibuti",
+        "capital": "Ciudad de Yibuti",
+        "english": "Djibouti",
+        "english_capital": "Djibouti"
+    },
+    "Zambia": {
+        "soberan_state": "República de Zambia",
+        "capital": "Lusaka",
+        "english": "Zambia",
+        "english_capital": "Lusaka"
+    },
+    "Zimbabue": {
+        "soberan_state": "República de Zimbabue",
+        "capital": "Harare",
+        "english": "Zimbabwe",
+        "english_capital": "Harare"
+    }
+}

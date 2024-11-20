@@ -5,7 +5,7 @@ import json
 import re
 from .crawler import Crawler
 from ..env import API_KEY
-
+# API_KEY = 'jeXvP9Un4E2RpgrYJYZFRB8XAMCMiuyVOY9fv6DHY5BZoR08HVghIbMS'
 class WikipediaCrawler(Crawler):
     def __init__(self):
         super().__init__(
@@ -48,15 +48,16 @@ class WikipediaCrawler(Crawler):
 
         return text
 
-    def get_imgs(self, place: str) -> str:
+    def get_imgs(self, place_english: str) -> str:
         photos = []
         URL = "https://api.pexels.com/v1/search"
         headers = {
             "Authorization": API_KEY
         }
         params = {
-            'query': place,
-            'per_page': 3
+            'query': place_english,
+            'per_page': 3,
+            'orientation': 'landscape'
         }
         response = requests.get(URL, headers=headers, params=params)
 
@@ -67,13 +68,13 @@ class WikipediaCrawler(Crawler):
                     photos.append(photo['src']['original'])
         return ",".join(photos)
     
-    def get_data(self, place: str) -> dict:
+    def get_data(self, place: str, place_english: str) -> dict:
         """
         Extracts important information about a destination from a Wikipedia page.
         """
         soup = self.crawl(place)
 
-        data = {"name": None, "country": None, "description": None, "image_url": None}
+        data = {"name": None, "english_name": place_english, "country": None, "description": None, "image_url": None}
 
         # Extracting the title of the page (name of the destination)
         title = soup.find("h1", id="firstHeading")
@@ -107,9 +108,11 @@ class WikipediaCrawler(Crawler):
                     except Exception:
                         print(f"Error al obtener el país de {place}")
             if not data["country"]:
-                data["country"] = place
-                
-            data["image_url"] = self.get_imgs(place)
+                data["country"] = place    
             data = data | self.get_country_data(data["country"])
+            data["image_url"] = self.get_imgs(place_english)
         # print(f"data retrieved from {place}")
         return data
+
+# crawler = WikipediaCrawler()
+# print(crawler.get_data("El Cairo", "Cairo"))

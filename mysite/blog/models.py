@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 # Country, city or main destination
 class Destination(models.Model):
     name = models.CharField(max_length=100)
+    english_name = models.CharField(max_length=100, blank=True, null=True)
     country = models.CharField(max_length=100)
     description = models.TextField()
     currency = models.CharField(max_length=10)
