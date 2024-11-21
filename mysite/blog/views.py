@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import StreamingHttpResponse, JsonResponse
+from django.db.models import Q
 from .models import Destination
 from .utils import query_ollama, get_destination, get_all_destinations
 
@@ -10,8 +11,11 @@ def index(request):
 
 def search_destinations(request):
     query = request.GET.get("q")
+    #clean query and remove any special characters
+    print("Query is", query)
+    query = ''.join(e for e in query.strip().lower() if e.isalnum())
     if query:
-        results = Destination.objects.filter(name__icontains=query)  # Filter by name
+        results = Destination.objects.filter(Q(name__icontains=query) | Q(english_name__icontains=query))
         if results:
             results = results[0]
             results.image_url = results.image_url.split(",")

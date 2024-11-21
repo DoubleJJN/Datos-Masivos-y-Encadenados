@@ -38,34 +38,42 @@
     <section id="destinations" class="section">
         <h2>Featured Destinations</h2>
         <div class="grid">
-            <div class="card">
-                <img src="{% static 'images/paris.jpg' %}" alt="Paris">
-                <div class="card-content">
-                    <h3>Paris, France</h3>
-                    <p>The City of Light, known for its art, fashion, and culture.</p>
+            <a href="/search/?=paris">
+                <div class="card">
+                    <img src="{% static 'images/paris.jpg' %}" alt="Paris">
+                    <div class="card-content">
+                        <h3>Paris, France</h3>
+                        <p>The City of Light, known for its art galeries, fashion, and culture.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="{% static 'images/tokyo.jpg' %}" alt="Tokyo">
-                <div class="card-content">
-                    <h3>Tokyo, Japan</h3>
-                    <p>A bustling city blending traditional culture with modern technology.</p>
+            </a>
+            <a href="/search/?=tokyo">
+                <div class="card">
+                    <img src="{% static 'images/tokyo.jpg' %}" alt="Tokyo">
+                    <div class="card-content">
+                        <h3>Tokyo, Japan</h3>
+                        <p>A bustling city blending traditional culture with modern technology.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="{% static 'images/newyork.jpg' %}" alt="New York">
-                <div class="card-content">
-                    <h3>New York, USA</h3>
-                    <p>The city that never sleeps, full of iconic landmarks.</p>
+            </a>
+            <a href="/search/?=newyork">
+                <div class="card">
+                    <img src="{% static 'images/newyork.jpg' %}" alt="New York">
+                    <div class="card-content">
+                        <h3>New York, USA</h3>
+                        <p>The city that never sleeps, full of iconic landmarks such as the liberty statue.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="{% static 'images/madrid.jpg' %}" alt="New York">
-                <div class="card-content">
-                    <h3>Madrid, Spain</h3>
-                    <p>Madrid, Spain's central capital, renowned for its art museums and vibrant culinary scene.</p>
+            </a>
+            <a href="/search/?=madrid">
+                <div class="card">
+                    <img src="{% static 'images/madrid.jpg' %}" alt="New York">
+                    <div class="card-content">
+                        <h3>Madrid, Spain</h3>
+                        <p>Madrid, Spain's central capital, renowned for its art museums and vibrant culinary scene.</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 

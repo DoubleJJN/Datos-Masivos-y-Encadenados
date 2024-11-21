@@ -42,6 +42,11 @@ body {
     box-shadow: 0 4px 8px var(--shadow-color);
 }
 
+a, u {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
 .navbar a {
     color: var(--text-color);
     text-decoration: none;
