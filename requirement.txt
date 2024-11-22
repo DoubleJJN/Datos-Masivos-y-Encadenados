@@ -2,3 +2,5 @@ django
 django-bootstrap5
 requests
 aiohttp
+beautifulsoup4
+tqdm
