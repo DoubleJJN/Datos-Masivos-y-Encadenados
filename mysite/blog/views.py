@@ -3,6 +3,8 @@ from django.http import StreamingHttpResponse, JsonResponse
 from django.db.models import Q
 from .models import Destination
 from .utils import query_ollama, get_destination, get_all_destinations
+from django.shortcuts import render
+from django.http import HttpResponse
 
 
 def index(request):
@@ -11,8 +13,17 @@ def index(request):
 
 def search_destinations(request):
     query = request.GET.get("q")
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
     #clean query and remove any special characters
     print("Query is", query)
+    print("Start date is", start_date)
+    print("End date is", end_date)
+
+    # Guardar las fechas en la sesión del usuario
+    request.session['start_date'] = start_date
+    request.session['end_date'] = end_date
+
     query = ''.join(e for e in query.strip().lower() if e.isalnum())
     if query:
         results = Destination.objects.filter(Q(name__icontains=query) | Q(english_name__icontains=query))
@@ -23,6 +34,7 @@ def search_destinations(request):
             results = get_destination(query)
         # results = Destination.objects.none()  # No results if no query
     # print(results)
+    
     return render(
         request, "blog/destinations.html", {"results": results, "query": query}
     )
