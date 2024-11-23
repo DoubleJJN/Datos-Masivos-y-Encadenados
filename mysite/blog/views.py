@@ -13,16 +13,16 @@ def index(request):
 
 def search_destinations(request):
     query = request.GET.get("q")
-    start_date = request.GET.get('start_date')
-    end_date = request.GET.get('end_date')
+    arrival_date = request.GET.get('arrival_date')
+    departure_date = request.GET.get('departure_date')
     #clean query and remove any special characters
     print("Query is", query)
-    print("Start date is", start_date)
-    print("End date is", end_date)
+    print("Start date is", arrival_date)
+    print("End date is", departure_date)
 
     # Guardar las fechas en la sesión del usuario
-    request.session['start_date'] = start_date
-    request.session['end_date'] = end_date
+    request.session['arrival_date'] = arrival_date
+    request.session['departure_date'] = departure_date
 
     query = ''.join(e for e in query.strip().lower() if e.isalnum())
     if query:
