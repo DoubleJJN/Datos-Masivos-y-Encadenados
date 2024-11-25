@@ -15,10 +15,12 @@ def search_destinations(request):
     query = request.GET.get("q")
     arrival_date = request.GET.get('arrival_date')
     departure_date = request.GET.get('departure_date')
+    num_people = request.GET.get('num_people')
     #clean query and remove any special characters
     print("Query is", query)
     print("Start date is", arrival_date)
     print("End date is", departure_date)
+    print("Number of people is", num_people)
 
     # Guardar las fechas en la sesión del usuario
     request.session['arrival_date'] = arrival_date

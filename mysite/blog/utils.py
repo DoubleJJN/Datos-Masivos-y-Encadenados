@@ -61,3 +61,16 @@ def get_destination(destination):
 def get_all_destinations():
     crawl_destinations()
     return "Crawling completed successfully."
+
+# gets a flight
+def get_flight(departure, arrival, departure_date, arrival_date, num_people):
+    try:
+        #best_flight = FlightsCrawler()
+        flight = Flight.objects.get(departure_airport=departure, arrival_airport=arrival, departure_date=departure_date, arrival_date=arrival_date, number_of_people=num_people)
+        return flight
+    except Flight.DoesNotExist:
+        pass
+    # flight_crawler = FlightCrawler()
+    # data = flight_crawler.get_data(departure, arrival, departure_date, arrival_date, num_people)
+    # flight_crawler.save_to_db(data)
+    return None
