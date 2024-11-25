@@ -4,6 +4,7 @@ from string import Template
 from .crawlers.destination_wikipedia import WikipediaCrawler
 from .crawlers.crawl_all_destinations import crawl_destinations
 from .models import Destination
+from .crawlers.flights_scrapper import FlightsScrapper
 
 query_template = Template(
     "Describe en dos frases en texto plano $destino para un turista que visita por primera vez."
@@ -62,15 +63,13 @@ def get_all_destinations():
     crawl_destinations()
     return "Crawling completed successfully."
 
-# gets a flight
-def get_flight(departure, arrival, departure_date, arrival_date, num_people):
+# gets a list of flights from the user data in real time
+def get_flights_list(departure, arrival, departure_date, arrival_date, num_people):
     try:
-        #best_flight = FlightsCrawler()
-        flight = Flight.objects.get(departure_airport=departure, arrival_airport=arrival, departure_date=departure_date, arrival_date=arrival_date, number_of_people=num_people)
-        return flight
-    except Flight.DoesNotExist:
-        pass
-    # flight_crawler = FlightCrawler()
-    # data = flight_crawler.get_data(departure, arrival, departure_date, arrival_date, num_people)
-    # flight_crawler.save_to_db(data)
-    return None
+        flights_scrapper = FlightsScrapper()
+        flights_list = flights_scrapper.scrape(departure, arrival, departure_date, arrival_date, num_people)
+        #first_flight = flights_scrapper.get_first_flight(departure, arrival, departure_date, arrival_date, num_people)
+        return flights_list
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None

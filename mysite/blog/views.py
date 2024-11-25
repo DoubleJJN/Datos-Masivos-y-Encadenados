@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import StreamingHttpResponse, JsonResponse
 from django.db.models import Q
 from .models import Destination
-from .utils import query_ollama, get_destination, get_all_destinations
+from .utils import query_ollama, get_destination, get_all_destinations, get_flights_list
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -36,9 +36,11 @@ def search_destinations(request):
             results = get_destination(query)
         # results = Destination.objects.none()  # No results if no query
     # print(results)
+
+    flights = get_flights_list("MAD", query, departure_date, arrival_date, num_people)
     
     return render(
-        request, "blog/destinations.html", {"results": results, "query": query}
+        request, "blog/destinations.html", {"results": results, "query": query, "flights": flights}
     )
 
 
