@@ -6,6 +6,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 import traceback
+import json
+import os
 
 class FlightsScrapper:
     def __init__(self):
@@ -19,19 +21,52 @@ class FlightsScrapper:
             self.options.add_argument("--disable-dev-shm-usage")
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=self.options)
 
-    def url_builder(self, departure, arrival, num_people, aeropuerto_origen, aeropuerto_destino, fecha_ida, fecha_vuelta):
-        return f"{self.base_url}/{departure}.AIRPORT-{arrival}.AIRPORT/?type=ROUNDTRIP&adults={num_people}&cabinClass=ECONOMY&children=&from={departure}.AIRPORT&to={arrival}.AIRPORT&fromCountry=ES&toCountry=IT&fromLocationName={aeropuerto_origen}&toLocationName={aeropuerto_destino}&depart={fecha_ida}&return={fecha_vuelta}&sort=BEST"
+        # Ruta absoluta basada en la ubicación de flights_scrapper.py
+        base_dir = os.path.dirname(os.path.abspath(__file__))  
+        json_path = os.path.join(base_dir, "data", "airports.json")  # Construye la ruta al JSON
+        # Cargar la base de datos de aeropuertos
+        with open(json_path, "r", encoding="utf-8") as f:
+            self.airports_data = json.load(f)
+
+
+    def get_airport_by_city(city_name, airports_data):
+        for airport in airports_data:
+            if airport['city'].lower() == city_name.lower():
+                return airport
+        return None
     
+    def get_airports_by_country(country_name, airports_data):
+        return [airport for airport in airports_data if airport['country'].lower() == country_name.lower()]
 
 
-    # iniciar la busqueda
-    def scrape(self, departure, arrival, departure_date, arrival_date, num_people):
+    # Construir la URL de búsqueda
+    def url_builder(self, departure_city, arrival_city, num_people, departure_date, return_date):
+        departure_airport = FlightsScrapper.get_airport_by_city(departure_city, self.airports_data)
+        arrival_airport = FlightsScrapper.get_airport_by_city(arrival_city, self.airports_data)
+
+        if not departure_airport or not arrival_airport:
+            raise ValueError("No se encontraron aeropuertos para las ciudades proporcionadas.")
+
+        departure_iata = departure_airport['IATA']
+        arrival_iata = arrival_airport['IATA']
+        departure_name = departure_airport['airport'].replace(" ", "+")
+        arrival_name = arrival_airport['airport'].replace(" ", "+")
+
+        print(departure_iata, arrival_iata)
+        print(departure_name, arrival_name)
+
+        return f"{self.base_url}/{departure_iata}.AIRPORT-{arrival_iata}.AIRPORT/?type=ROUNDTRIP&adults={num_people}&cabinClass=ECONOMY&children=&from={departure_iata}.AIRPORT&to={arrival_iata}.AIRPORT&fromCountry=&toCountry=&fromLocationName={departure_name}&toLocationName={arrival_name}&depart={departure_date}&return={return_date}&sort=BEST"
+
+
+    # Iniciar la busqueda en booking.com
+    def scrape(self, departure_city, arrival_city, departure_date, return_date, num_people):
         # Iniciar el navegador
-        url = self.url_builder("MAD", "FCO", "2", "Aeropuerto+Adolfo+Suárez+Madrid+-+Barajas", "Aeropuerto+de+Roma+-+Fiumicino", "2024-12-21", "2024-12-28")
+        url = self.url_builder(departure_city, arrival_city, num_people, departure_date, return_date)
         self.driver.get(url)
+        print(url)
 
         # Esperar a que la página cargue
-        wait = WebDriverWait(self.driver, 5)
+        wait = WebDriverWait(self.driver, 15)
         wait.until(EC.presence_of_element_located((By.XPATH, "//ul[contains(@class, 'List-module__root')]")))
 
         try:
@@ -52,6 +87,7 @@ class FlightsScrapper:
         except Exception as e:
             print("Ocurrió un error:")
             traceback.print_exc()
+            print(e)
 
         finally:
             self.driver.quit()
@@ -107,13 +143,8 @@ class FlightsScrapper:
                     
             return flight_info
     
-    def get_first_flight(self, departure, arrival, departure_date, arrival_date, num_people):
-        flight = self.scrape(departure, arrival, departure_date, arrival_date, num_people)[0]
-        return flight
-    
 # ejemplo de uso
 if __name__ == "__main__":
     scrapper = FlightsScrapper()
-    #data = scrapper.scrape('MAD', 'FCO', '2024-12-21', '2024-12-28', '2')
-    data = scrapper.get_first_flight('MAD', 'FCO', '2024-12-21', '2024-12-28', '2')
+    data = scrapper.scrape('Madrid', 'londres', '2024-12-21', '2024-12-28', '2')
     print(data)

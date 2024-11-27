@@ -68,7 +68,6 @@ def get_flights_list(departure, arrival, departure_date, arrival_date, num_peopl
     try:
         flights_scrapper = FlightsScrapper()
         flights_list = flights_scrapper.scrape(departure, arrival, departure_date, arrival_date, num_people)
-        #first_flight = flights_scrapper.get_first_flight(departure, arrival, departure_date, arrival_date, num_people)
         return flights_list
     except Exception as e:
         print(f"An error occurred: {e}")
