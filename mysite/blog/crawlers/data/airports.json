@@ -1,0 +1,105 @@
+[
+    {
+      "country": "Tailandia",
+      "city": "Bangkok",
+      "IATA": "BKK",
+      "airport": "Suvarnabhumi"
+    },
+    {
+      "country": "Francia",
+      "city": "París",
+      "IATA": "CDG",
+      "airport": "Charles de Gaulle"
+    },
+    {
+      "country": "Reino Unido",
+      "city": "Londres",
+      "IATA": "LHR",
+      "airport": "Heathrow"
+    },
+    {
+      "country": "Emiratos Árabes Unidos",
+      "city": "Dubái",
+      "IATA": "DXB",
+      "airport": "Dubái International"
+    },
+    {
+      "country": "Singapur",
+      "city": "Singapur",
+      "IATA": "SIN",
+      "airport": "Changi"
+    },
+    {
+      "country": "Estados Unidos",
+      "city": "Nueva York",
+      "IATA": "JFK",
+      "airport": "John F. Kennedy"
+    },
+    {
+      "country": "Japón",
+      "city": "Tokio",
+      "IATA": "NRT",
+      "airport": "Narita"
+    },
+    {
+      "country": "Japón",
+      "city": "Tokio",
+      "IATA": "HND",
+      "airport": "Haneda"
+    },
+    {
+      "country": "Turquía",
+      "city": "Estambul",
+      "IATA": "IST",
+      "airport": "Aeropuerto de Estambul"
+    },
+    {
+      "country": "China",
+      "city": "Hong Kong",
+      "IATA": "HKG",
+      "airport": "Hong Kong International"
+    },
+    {
+      "country": "Italia",
+      "city": "Roma",
+      "IATA": "FCO",
+      "airport": "Leonardo da Vinci-Fiumicino"
+    },
+    {
+      "country": "Corea del Sur",
+      "city": "Seúl",
+      "IATA": "ICN",
+      "airport": "Incheon"
+    },
+    {
+      "country": "Malasia",
+      "city": "Kuala Lumpur",
+      "IATA": "KUL",
+      "airport": "Kuala Lumpur International"
+    },
+    {
+      "country": "España",
+      "city": "Barcelona",
+      "IATA": "BCN",
+      "airport": "El Prat"
+    },
+    {
+      "country": "Países Bajos",
+      "city": "Ámsterdam",
+      "IATA": "AMS",
+      "airport": "Schiphol"
+    },
+    {
+      "country": "Estados Unidos",
+      "city": "Los Ángeles",
+      "IATA": "LAX",
+      "airport": "Los Ángeles International"
+    },
+    {
+        "country": "España",
+        "city": "Madrid",
+        "IATA": "MAD",
+        "airport": "Adolfo Suárez Madrid-Barajas"
+    }
+  ]
+  

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import StreamingHttpResponse, JsonResponse
 from django.db.models import Q
 from .models import Destination
-from .utils import query_ollama, get_destination, get_all_destinations
+from .utils import query_ollama, get_destination, get_all_destinations, get_flights_list
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -13,16 +13,18 @@ def index(request):
 
 def search_destinations(request):
     query = request.GET.get("q")
-    arrival_date = request.GET.get('arrival_date')
     departure_date = request.GET.get('departure_date')
+    return_date = request.GET.get('return_date')
+    num_people = request.GET.get('num_people')
     #clean query and remove any special characters
     print("Query is", query)
-    print("Start date is", arrival_date)
-    print("End date is", departure_date)
+    print("Start date is", departure_date)
+    print("End date is", return_date)
+    print("Number of people is", num_people)
 
     # Guardar las fechas en la sesión del usuario
-    request.session['arrival_date'] = arrival_date
-    request.session['departure_date'] = departure_date
+    request.session['arrival_date'] = departure_date
+    request.session['departure_date'] = return_date
 
     query = ''.join(e for e in query.strip().lower() if e.isalnum())
     if query:
@@ -34,9 +36,12 @@ def search_destinations(request):
             results = get_destination(query)
         # results = Destination.objects.none()  # No results if no query
     # print(results)
+
+    flights = get_flights_list("Madrid", query, departure_date, return_date, num_people)
+    
     
     return render(
-        request, "blog/destinations.html", {"results": results, "query": query}
+        request, "blog/destinations.html", {"results": results, "query": query, "flights": flights}
     )
 
 

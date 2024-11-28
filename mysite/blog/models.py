@@ -29,6 +29,21 @@ class Accommodation(models.Model):
 
     def __str__(self):
         return f"{self.name} in {self.destination}"
+    
+# Theorical model in case we want to save the flights in the database
+# Flights
+# class Flight(models.Model):
+#    destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+#    airline = models.CharField(max_length=100)
+#    departure_airport = models.CharField(max_length=100)
+#    arrival_airport = models.CharField(max_length=100)
+#    departure_date = models.DateField()
+#    arrival_date = models.DateField()
+#    number_of_people = models.IntegerField()
+#    total_price = models.DecimalField(max_digits=10, decimal_places=2)
+#
+#    def __str__(self):
+#        return f"Flight from {self.departure_airport} to {self.arrival_airport}"
 
 
 # class Activity(models.Model):
