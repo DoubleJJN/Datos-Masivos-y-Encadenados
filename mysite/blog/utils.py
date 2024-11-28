@@ -22,6 +22,7 @@ def get_text(responses):
     # print(text)
     return text
 
+
 def query_ollama(query):
     query = (
         query_template.substitute(destino=query)
@@ -47,6 +48,7 @@ def query_ollama(query):
 
     return context
 
+
 # gets a destination from the database or crawls it if it doesn't exist
 def get_destination(destination):
     try:
@@ -59,15 +61,19 @@ def get_destination(destination):
     destination_crawler.save_to_db(data)
     return data
 
+
 def get_all_destinations():
     crawl_destinations()
     return "Crawling completed successfully."
+
 
 # gets a list of flights from the user data in real time
 def get_flights_list(departure, arrival, departure_date, arrival_date, num_people):
     try:
         flights_scrapper = FlightsScrapper()
-        flights_list = flights_scrapper.scrape(departure, arrival, departure_date, arrival_date, num_people)
+        flights_list = flights_scrapper.scrape(
+            departure, arrival, departure_date, arrival_date, num_people
+        )
         return flights_list
     except Exception as e:
         print(f"An error occurred: {e}")

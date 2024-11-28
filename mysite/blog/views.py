@@ -13,36 +13,45 @@ def index(request):
 
 def search_destinations(request):
     query = request.GET.get("q")
-    departure_date = request.GET.get('departure_date')
-    return_date = request.GET.get('return_date')
-    num_people = request.GET.get('num_people')
-    #clean query and remove any special characters
+    departure_date = request.GET.get("departure_date")
+    return_date = request.GET.get("return_date")
+    num_people = request.GET.get("num_people")
+    # clean query and remove any special characters
     print("Query is", query)
     print("Start date is", departure_date)
     print("End date is", return_date)
     print("Number of people is", num_people)
 
     # Guardar las fechas en la sesión del usuario
-    request.session['arrival_date'] = departure_date
-    request.session['departure_date'] = return_date
+    request.session["arrival_date"] = departure_date
+    request.session["departure_date"] = return_date
 
-    query = ''.join(e for e in query.strip().lower() if e.isalnum())
+    query = "".join(e for e in query.strip().lower() if e.isalnum())
     if query:
-        results = Destination.objects.filter(Q(name__icontains=query) | Q(english_name__icontains=query))
+        results = Destination.objects.filter(
+            Q(name__icontains=query) | Q(english_name__icontains=query)
+        )
         if results:
             results = results[0]
             results.image_url = results.image_url.split(",")
         else:
             results = get_destination(query)
-        # results = Destination.objects.none()  # No results if no query
-    # print(results)
 
-    flights = get_flights_list("Madrid", query, departure_date, return_date, num_people)
-    
-    
     return render(
-        request, "blog/destinations.html", {"results": results, "query": query, "flights": flights}
+        request, "blog/destinations.html", {"results": results, "query": query}
     )
+
+
+def get_flights_api(request):
+    departure = request.GET.get("departure")
+    destination = request.GET.get("q")
+    departure_date = request.GET.get("departure_date")
+    return_date = request.GET.get("return_date")
+    num_people = request.GET.get("num_people")
+    flights = get_flights_list(
+        departure, destination, departure_date, return_date, num_people
+    )
+    return JsonResponse({"flights": flights})
 
 
 def ollama(request):
@@ -54,6 +63,7 @@ def ollama_query_api(request):
     # print(query)
     context = query_ollama(query)
     return JsonResponse(context)
+
 
 def get_all_destinations_v(request):
     results = get_all_destinations()

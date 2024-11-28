@@ -5,6 +5,8 @@ import json
 import re
 from .crawler import Crawler
 from ..env import API_KEY
+
+
 # API_KEY = 'jeXvP9Un4E2RpgrYJYZFRB8XAMCMiuyVOY9fv6DHY5BZoR08HVghIbMS'
 class WikipediaCrawler(Crawler):
     def __init__(self):
@@ -51,30 +53,30 @@ class WikipediaCrawler(Crawler):
     def get_imgs(self, place_english: str) -> str:
         photos = []
         URL = "https://api.pexels.com/v1/search"
-        headers = {
-            "Authorization": API_KEY
-        }
-        params = {
-            'query': place_english,
-            'per_page': 3,
-            'orientation': 'landscape'
-        }
+        headers = {"Authorization": API_KEY}
+        params = {"query": place_english, "per_page": 3, "orientation": "landscape"}
         response = requests.get(URL, headers=headers, params=params)
 
         if response.status_code == 200:
             data = response.json()
-            if data['photos']:
-                for i, photo in enumerate(data['photos'], start=1):
-                    photos.append(photo['src']['original'])
+            if data["photos"]:
+                for i, photo in enumerate(data["photos"], start=1):
+                    photos.append(photo["src"]["original"])
         return ",".join(photos)
-    
+
     def get_data(self, place: str, place_english: str) -> dict:
         """
         Extracts important information about a destination from a Wikipedia page.
         """
         soup = self.crawl(place)
 
-        data = {"name": None, "english_name": place_english, "country": None, "description": None, "image_url": None}
+        data = {
+            "name": None,
+            "english_name": place_english,
+            "country": None,
+            "description": None,
+            "image_url": None,
+        }
 
         # Extracting the title of the page (name of the destination)
         title = soup.find("h1", id="firstHeading")
@@ -84,7 +86,11 @@ class WikipediaCrawler(Crawler):
         # Extracting a brief description (first paragraph in content)
         description = soup.find("div", class_="mw-content-ltr")
         if description:
-            first_paragraph = description.find("p", recursive=False, class_=lambda x: x != 'mw-empty-elt' if x else True)
+            first_paragraph = description.find(
+                "p",
+                recursive=False,
+                class_=lambda x: x != "mw-empty-elt" if x else True,
+            )
             if first_paragraph:
                 # Quitamos los saltos de línea, espacios en blanco y corchetes
                 text = re.sub(r"\s+", " ", first_paragraph.text).strip()
@@ -104,15 +110,18 @@ class WikipediaCrawler(Crawler):
                 header_text = header.text.strip().lower()
                 if header_text.strip() == "país" or header_text.strip() == "• país":
                     try:
-                        data["country"] = self.clean_text(value.find("a", recursive=False).text.strip())
+                        data["country"] = self.clean_text(
+                            value.find("a", recursive=False).text.strip()
+                        )
                     except Exception:
                         print(f"Error al obtener el país de {place}")
             if not data["country"]:
-                data["country"] = place    
+                data["country"] = place
             data = data | self.get_country_data(data["country"])
             data["image_url"] = self.get_imgs(place_english)
         # print(f"data retrieved from {place}")
         return data
+
 
 # crawler = WikipediaCrawler()
 # print(crawler.get_data("El Cairo", "Cairo"))

@@ -29,7 +29,8 @@ class Accommodation(models.Model):
 
     def __str__(self):
         return f"{self.name} in {self.destination}"
-    
+
+
 # Theorical model in case we want to save the flights in the database
 # Flights
 # class Flight(models.Model):

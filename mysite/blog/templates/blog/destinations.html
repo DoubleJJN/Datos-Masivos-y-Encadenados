@@ -8,7 +8,6 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="icon" type="image/png" href="{% static 'images/Travelia_Logo.png' %}">
     <script src="{% static 'js/scripts.js' %}"></script>
     <style>
@@ -87,8 +86,8 @@
                     <p><strong>Ciudad:</strong> {{ results.city }}</p>
                     <p><strong>Descripción:</strong> {{ results.description }}</p>
                     <p><strong>Latitud:</strong> {{ results.latitude }}, <strong>Longitud:</strong> {{ results.longitude }}</p>
-                    <div id="loader"></div>
-                    <div class="result" style="overflow: hidden; flex: 1;"></div>
+                    <div class="loader" id="loader_ollama"></div>
+                    <div id="result_ollama" style="overflow: hidden; flex: 1;"></div>
                 </div>
             </div>
         </div>
@@ -97,7 +96,7 @@
             <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
                 <h5 class="card-title">Vuelos hacia {{ results.name }}</h5>
                 <!-- Contenedor con scroll -->
-                <div class="row row-cols-1 g-3" style="max-height: 320px; overflow-y: auto;">
+                {% comment %} <div class="row row-cols-1 g-3" style="max-height: 320px; overflow-y: auto;">
                     {% for flight in flights %}
                     <div class="col">
                         <div class="card shadow-sm d-flex flex-row align-items-center">
@@ -124,7 +123,9 @@
                     <div class="col">
                         <p>No hay vuelos disponibles hacia este destino.</p>
                     </div>
-                    {% endfor %}
+                    {% endfor %} {% endcomment %}
+                    <div class="loader" id="loader_flights"></div>
+                    <div id="result_flights" class="row row-cols-1 g-3" style="max-height: 320px; overflow-y: auto;"></div>
                 </div>
             </div>
         </div>            
