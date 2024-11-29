@@ -7,7 +7,7 @@ from .crawler import Crawler
 from ..env import API_KEY
 
 
-# API_KEY = 'jeXvP9Un4E2RpgrYJYZFRB8XAMCMiuyVOY9fv6DHY5BZoR08HVghIbMS'
+
 class WikipediaCrawler(Crawler):
     def __init__(self):
         super().__init__(
