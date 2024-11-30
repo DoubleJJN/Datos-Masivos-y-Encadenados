@@ -29,6 +29,8 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Navbar */
@@ -40,6 +42,7 @@ body {
     align-items: center;
     color: var(--text-color);
     box-shadow: 0 4px 8px var(--shadow-color);
+    height: 10vh;
 }
 
 a, u {
@@ -209,6 +212,8 @@ a, u {
 
 .card-body {
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
 }
 
 .card-map {
@@ -265,8 +270,8 @@ a, u {
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
-            50% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
+            70% { transform: rotate(720deg); }
+            100% { transform: rotate(1440deg); }
 
         }
 
@@ -284,7 +289,7 @@ footer {
     color: white;
     text-align: center;
     padding: 20px;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
 }
