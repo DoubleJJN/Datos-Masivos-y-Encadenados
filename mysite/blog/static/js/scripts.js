@@ -54,22 +54,25 @@ function get_flights() {
                         <div class="col">
                             <div class="card shadow-sm d-flex flex-row align-items-center">
                                 <div class="card-body d-flex flex-grow-1 justify-content-between align-items-center">
-                                    <div class="details" style="flex: 1;">
-
-                                        <h6 class="card-title mb-2">Ida</h6>
-                                        <p><strong>Salida:</strong> ${flight.vuelo_ida.hora_salida} - <strong>Llegada:</strong> ${flight.vuelo_ida.hora_llegada}</p>
-                                        <p><strong>Duración:</strong> ${flight.vuelo_ida.duracion}</p>
-
-                                        <h6 class="card-title mb-2">Vuelta</h6>
-                                        <p><strong>Salida:</strong> ${flight.vuelo_vuelta.hora_salida} - <strong>Llegada:</strong> ${flight.vuelo_vuelta.hora_llegada}</p>
-                                        <p><strong>Duración:</strong> ${flight.vuelo_vuelta.duracion}</p>
-
-
-                                    </div>
-                                  
-                                    <div class="details-price" style="flex: 1;">
+                                    <div class="details" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                                        <div>
+                                            <h5 class="card-title mb-2 custom-color"><strong>Ida</strong></h5>
+                                            <div>
+                                                <p style="color:  #ba95f6;"><strong>Salida:</strong> ${flight.vuelo_ida.hora_salida} - <strong>Llegada:</strong> ${flight.vuelo_ida.hora_llegada}</p>
+                                                <p style="color:  #ba95f6;"><strong>Duración:</strong> ${flight.vuelo_ida.duracion}</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h5 class="card-title mb-2 custom-color"><strong>Vuelta</strong></h5>
+                                            <div>
+                                                <p style="color:  #ba95f6;"><strong>Salida:</strong> ${flight.vuelo_vuelta.hora_salida} - <strong>Llegada:</strong> ${flight.vuelo_vuelta.hora_llegada}</p>
+                                                <p style="color:  #ba95f6;"><strong>Duración:</strong> ${flight.vuelo_vuelta.duracion}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="details-price" style="flex: 1; text-align: right; color: #ba95f6;">
                                         <p><strong>Precio:</strong> ${flight.precio_individual} por persona</p>
-                                    </div>
+                                    </div>    
                                 </div>
                             </div>
                         </div>

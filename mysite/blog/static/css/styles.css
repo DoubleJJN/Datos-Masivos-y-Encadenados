@@ -297,3 +297,8 @@ footer a:hover {
     text-decoration: underline;
     color: aqua;
 }
+
+
+.custom-color {
+    color: #9e6af2;
+}
