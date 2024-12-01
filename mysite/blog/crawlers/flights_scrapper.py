@@ -11,6 +11,40 @@ import os
 from time import time_ns
 
 
+class Cache:
+    def __init__(self, minutes=5):
+        self.cache = {}
+        self.minutes = minutes
+
+    def simple_hash(self, key):
+        return str(sum([ord(c) for c in key])) + str(len(key))
+
+    def check_keys_timestamp(self):
+        for key, data in self.cache.items():
+            if (time_ns() - data["timestamp"]) / 1e9 / 60 > self.minutes:
+                del self.cache[key]
+
+    def get(self, key):
+        self.check_keys_timestamp()
+        key = self.simple_hash(key)
+        if key in self.cache.keys():
+            data = self.cache[key]
+            return data["data"]
+        return None
+
+    def set(self, key, data):
+        key = self.simple_hash(key)
+        self.cache[key] = {"data": data, "timestamp": time_ns()}
+        self.print_cache()
+
+    def print_cache(self):
+        for key, data in self.cache.items():
+            print(key)
+
+    def clear(self):
+        self.cache = {}
+
+
 class FlightsScrapper:
     def __init__(self):
         self.base_url = "https://flights.booking.com/flights"
@@ -21,9 +55,6 @@ class FlightsScrapper:
             self.options.add_argument("--disable-gpu")
             self.options.add_argument("--no-sandbox")
             self.options.add_argument("--disable-dev-shm-usage")
-        self.driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install()), options=self.options
-        )
 
         # Ruta absoluta basada en la ubicación de flights_scrapper.py
         base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -32,6 +63,8 @@ class FlightsScrapper:
         # Cargar la base de datos de aeropuertos
         with open(json_path, "r", encoding="utf-8") as f:
             self.airports_data = json.load(f)
+
+        self.cache = Cache(5)
 
     def get_airport_by_city(city_name, airports_data):
         for airport in airports_data:
@@ -49,7 +82,7 @@ class FlightsScrapper:
     # Construir la URL de búsqueda
 
     def url_builder(
-        self, departure_city, arrival_city, num_people, departure_date, return_date
+        self, departure_city, arrival_city, num_people: str, departure_date, return_date
     ):
         departure_airport = FlightsScrapper.get_airport_by_city(
             departure_city, self.airports_data
@@ -67,7 +100,12 @@ class FlightsScrapper:
         arrival_iata = arrival_airport["IATA"]
         departure_name = departure_airport["airport"].replace(" ", "+")
         arrival_name = arrival_airport["airport"].replace(" ", "+")
-
+        if not num_people.isnumeric() or int(num_people) > 4 or int(num_people) < 1:
+            num_people = 1
+        if not departure_date:
+            departure_date = "2025-01-04"
+        if not return_date:
+            return_date = "2025-01-11"
         print(departure_iata, arrival_iata)
         print(departure_name, arrival_name)
 
@@ -82,18 +120,22 @@ class FlightsScrapper:
         url = self.url_builder(
             departure_city, arrival_city, num_people, departure_date, return_date
         )
-        self.driver.get(url)
-        print(url)
-        # Esperar a que la página cargue
+        if elems := self.cache.get(url):
+            return self.cache.get(url)
+
+        self.driver = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install()), options=self.options
+        )
         try:
-            wait = WebDriverWait(self.driver, 15)
+            # print(url)
+            self.driver.get(url)
+            wait = WebDriverWait(self.driver, 30)
             wait.until(
                 EC.presence_of_element_located(
                     (By.CSS_SELECTOR, "ul[class*='List-module__root']")
                 )
             )
-
-            print("Página cargada")
+            # print("Página cargada")
             # Extraer la información
             flights_data = []
 
@@ -118,6 +160,7 @@ class FlightsScrapper:
 
         finally:
             self.driver.quit()
+        self.cache.set(url, flights_data)
         return flights_data
 
     def get_data(self, flight):

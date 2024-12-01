@@ -9,6 +9,9 @@
     {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/Travelia_Logo.png' %}">
+    <script>
+        window.correctedPlace = "{{ corrected_place|escapejs }}";
+    </script>    
     <script src="{% static 'js/scripts.js' %}"></script>
     <style>
         .content {
@@ -22,6 +25,7 @@
             max-height: 400px;
             object-fit: cover;
             border-radius: 8px;
+            max-width: 100%;
         }
 
         .map, .info {
@@ -52,8 +56,7 @@
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.47827054537!2d-3.8443426076978033!3d40.438098610155286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid!5e0!3m2!1ses!2ses!4v1731025880191!5m2!1ses!2ses"
                     width="100%" 
                     {% comment %} height="300"  {% endcomment %}
-                    flex="1"
-                    style="border:0;" 
+                    style="border:0; flex:1;" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
@@ -62,71 +65,41 @@
         </div>
     </div class="content">
     <!-- Sección de contenido con mapa e información relevante -->
-    <div class="content">
+    <div class="content" style="max-height: 50vh;">
         <!-- Mapa de Google Maps -->
         <div class="card shadow-sm" style="flex: 1; margin: 0 20px;">
             <div class="card-body">
-                <h5 class="card-title custom-color"><strong>Mapa</strong></h5>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.47827054537!2d-3.8443426076978033!3d40.438098610155286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid!5e0!3m2!1ses!2ses!4v1731025880191!5m2!1ses!2ses"
-                    width="100%" 
-                    height="300" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <h5 class="card-title custom-color"><strong>Vuelos hacia {{ results.name }}</strong></h5>
+                <div class="loader" id="loader_hotels"></div>
+                <div id="result_hotels" class="row row-cols-1 g-3" style="max-height: 45vh; overflow-y: auto;"></div>
             </div>
         </div>
 
         <div class="card shadow-sm" style="flex: 1; margin: 0 20px;">
             <div class="card-body">
                 <h5 class="card-title custom-color"><strong>Información sobre {{ results.name }}</strong></h5>
-                <div style="height: 300px; overflow-y: auto; overflow-x: hidden;" style="display: flex;">
-                    <p style="color: #ba95f6;"><strong class="custom-color">País:</strong> {{ results.country }}</p>
-                    <p style="color: #ba95f6;"><strong class="custom-color">Ciudad:</strong> {{ results.city }}</p>
-                    <p style="color: #ba95f6;"><strong class="custom-color">Descripción:</strong> {{ results.description }}</p>
-                    <p style="color: #ba95f6;"><strong class="custom-color">Latitud:</strong> {{ results.latitude }}, <strong class="custom-color">Longitud:</strong> {{ results.longitude }}</p>
+                <div style="height: 45vh; overflow-y: auto; overflow-x: hidden;" style="display: flex;">
+                    <p><strong class="custom-color">País:</strong> {{ results.country }}</p>
+                    <p><strong class="custom-color">Ciudad:</strong> {{ results.city }}</p>
+                    <p><strong class="custom-color">Descripción:</strong> {{ results.description }}</p>
+                    <p><strong class="custom-color">Moneda:</strong> {{ results.currency }}</p>
+                    <p><strong class="custom-color">Huso horario:</strong> {{ results.timezone }}</p>
+                    <p><strong class="custom-color">Idioma:</strong> {{ results.language }}</p>
                     <div class="loader" id="loader_ollama"></div>
-                    <div id="result_ollama" style="overflow: hidden; flex: 1;"></div>
+                    <div id="result_ollama" style="overflow: hidden; flex: 1; max-height: 45vh;"></div>
                 </div>
             </div>
         </div>
-
+        {% comment %} style="color: #ba95f6;"
+        style="color: #ba95f6;"
+        style="color: #ba95f6;"
+        style="color: #ba95f6;" {% endcomment %}
         <div class="card shadow-sm" style="flex: 1; margin: 0 20px;">
             <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
-                <h5 class="card-title custom-color"><strong>Vuelos hacia {{ results.name }}</strong></h5>
+                <h5 class="card-title custom-color"><strong>Hoteles en {{ results.name }}</strong></h5>
                 <!-- Contenedor con scroll -->
-                {% comment %} <div class="row row-cols-1 g-3" style="max-height: 320px; overflow-y: auto;">
-                    {% for flight in flights %}
-                    <div class="col">
-                        <div class="card shadow-sm d-flex flex-row align-items-center">
-                            <div class="card-body d-flex flex-grow-1 justify-content-between align-items-center">
-                                <div class="details" style="flex: 1;">
-                                    <h6 class="card-title mb-2">Ida</h6>
-                                    <p><strong>Salida:</strong> {{ flight.vuelo_ida.hora_salida }} - 
-                                        <strong>Llegada:</strong> {{ flight.vuelo_ida.hora_llegada }}</p>
-                                    <p><strong>Duración:</strong> {{ flight.vuelo_ida.duracion }}</p>
-                                </div>
-                                <div class="details-vuelta" style="flex: 1;">
-                                    <h6 class="card-title mb-2">Vuelta</h6>
-                                    <p><strong>Salida:</strong> {{ flight.vuelo_vuelta.hora_salida }} - 
-                                        <strong>Llegada:</strong> {{ flight.vuelo_vuelta.hora_llegada }}</p>
-                                    <p><strong>Duración:</strong> {{ flight.vuelo_vuelta.duracion }}</p>
-                                </div>
-                                <div class="details-vuelta" style="flex: 1;">
-                                    <p><strong>Precio:</strong> {{ flight.precio_individual }} por persona</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% empty %}
-                    <div class="col">
-                        <p>No hay vuelos disponibles hacia este destino.</p>
-                    </div>
-                    {% endfor %} {% endcomment %}
                     <div class="loader" id="loader_flights"></div>
-                    <div id="result_flights" class="row row-cols-1 g-3" style="max-height: 320px; overflow-y: auto;"></div>
+                    <div id="result_flights" class="row row-cols-1 g-3" style="max-height: 45vh; overflow-y: auto;"></div>
                 </div>
             </div>
         </div>            

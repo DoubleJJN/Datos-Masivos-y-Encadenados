@@ -14,6 +14,7 @@
     --item-background: #363b3d;
     --primary-dark: #5f96ff;
     --primary-light: #4b00a1;
+    --hover-light: rgba(47, 25, 49, 0.2);
 
 }
 
@@ -42,7 +43,6 @@ body {
     align-items: center;
     color: var(--text-color);
     box-shadow: 0 4px 8px var(--shadow-color);
-    height: 10vh;
 }
 
 a, u {
@@ -96,9 +96,6 @@ a, u {
     transition: background 0.5s;
 }
 
-.btn:hover {
-    background-color: var(--primary-dark);
-}
 
 .search-container {
     margin: 20px auto;
@@ -129,7 +126,7 @@ a, u {
 }
 
 .search-container button {
-    padding: 10px 20px;
+    padding: 15px 20px;
     background: var(--primary-light);
     /* Primary color */
     color: var(--text-color);
@@ -210,6 +207,15 @@ a, u {
     transition: transform 0.5s;
 }
 
+.data-card {
+    background-color: var(--shadow-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--background-color);
+    overflow: hidden;
+    transition: transform 0.1s, background-color 0.1s ease-in;
+    will-change: transform, background-color;
+}
+
 .card-body {
     color: var(--text-color);
     display: flex;
@@ -226,6 +232,11 @@ a, u {
 
 .card:hover {
     transform: translateY(-10px);
+}
+
+.data-card:hover {
+    transform: scale3d(1.01, 1.01, 1.01);
+    background-color: var(--hover-light);
 }
 
 .card img {
@@ -267,6 +278,7 @@ a, u {
             height: 50px;
             animation: spin 3s linear infinite;
             margin: 20px auto;
+            z-index: 1000;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -289,7 +301,7 @@ footer {
     color: white;
     text-align: center;
     padding: 20px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -304,6 +316,6 @@ footer a:hover {
 }
 
 
-.custom-color {
+/* .custom-color {
     color: #9e6af2;
-}
+} */

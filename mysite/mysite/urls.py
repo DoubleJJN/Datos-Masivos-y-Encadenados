@@ -31,5 +31,6 @@ urlpatterns = [
         name="get_all_destinations",
     ),
     path("search/api/get_flights/", views.get_flights_api, name="get_flights"),
+    path("search/api/get_hotels/", views.get_hotels_api, name="get_hotels"),
     # path('blog/', include('blog.urls')),
 ]

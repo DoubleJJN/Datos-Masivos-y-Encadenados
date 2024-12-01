@@ -7,7 +7,6 @@ from .crawler import Crawler
 from ..env import API_KEY
 
 
-
 class WikipediaCrawler(Crawler):
     def __init__(self):
         super().__init__(
@@ -64,7 +63,7 @@ class WikipediaCrawler(Crawler):
                     photos.append(photo["src"]["original"])
         return ",".join(photos)
 
-    def get_data(self, place: str, place_english: str) -> dict:
+    def get_data(self, place: str, place_english: str = "") -> dict:
         """
         Extracts important information about a destination from a Wikipedia page.
         """
@@ -118,7 +117,8 @@ class WikipediaCrawler(Crawler):
             if not data["country"]:
                 data["country"] = place
             data = data | self.get_country_data(data["country"])
-            data["image_url"] = self.get_imgs(place_english)
+            if place_english != "":
+                data["image_url"] = self.get_imgs(place_english)
         # print(f"data retrieved from {place}")
         return data
 

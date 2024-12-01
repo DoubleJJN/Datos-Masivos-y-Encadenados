@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +21,7 @@
             <form method="GET" action="{% url 'search_destinations' %}">
                 <div class="search-container" style="flex-direction: row;">
                     <input type="text" name="q" placeholder="Search for destinations..." required >
-                    <div style="padding: 5px 10px; background: var(--primary-light);color: var(--text-color);border: none;border-radius: 0 5px 5px 0;cursor: pointer; transition: background 0.5s;">
-                        <button type="submit">Search</button>
-                    </div>
+                    <button type="submit">Search</button>
                 </div>  
 
                 <div class="search-container" style="justify-content: center; align-items: center;">

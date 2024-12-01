@@ -2,9 +2,16 @@ from django.shortcuts import render, get_object_or_404
 from django.http import StreamingHttpResponse, JsonResponse
 from django.db.models import Q
 from .models import Destination
-from .utils import query_ollama, get_destination, get_all_destinations, get_flights_list
+from .utils import (
+    query_ollama,
+    get_destination,
+    get_all_destinations,
+    get_flights_list,
+    get_hotel_list,
+)
 from django.shortcuts import render
 from django.http import HttpResponse
+from difflib import SequenceMatcher
 
 
 def index(request):
@@ -16,29 +23,51 @@ def search_destinations(request):
     departure_date = request.GET.get("departure_date")
     return_date = request.GET.get("return_date")
     num_people = request.GET.get("num_people")
-    # clean query and remove any special characters
-    print("Query is", query)
-    print("Start date is", departure_date)
-    print("End date is", return_date)
-    print("Number of people is", num_people)
+
+    # Limpiar y procesar la consulta
+    query = query.strip().lower() if query else ""
 
     # Guardar las fechas en la sesión del usuario
     request.session["arrival_date"] = departure_date
     request.session["departure_date"] = return_date
 
-    query = "".join(e for e in query.strip().lower() if e.isalnum())
+    # Retirar caracteres especiales
+    query = "".join(e for e in query if e.isalnum())
+
+    results = None
     if query:
-        results = Destination.objects.filter(
-            Q(name__icontains=query) | Q(english_name__icontains=query)
-        )
-        if results:
-            results = results[0]
+        all_destinations = Destination.objects.all()
+
+        # Calcular similitudes con difflib
+        def similarity(a, b):
+            return SequenceMatcher(None, a, b).ratio()
+
+        # Crear una lista con las similitudes
+        scored_results = [
+            (
+                dest,
+                max(
+                    similarity(query, dest.name.lower()),
+                    similarity(query, dest.english_name.lower()),
+                ),
+            )
+            for dest in all_destinations
+        ]
+
+        # Ordenar resultados por similitud descendente
+        scored_results = sorted(scored_results, key=lambda x: x[1], reverse=True)
+
+        # Seleccionar el destino más similar si existe
+        if scored_results and scored_results[0][1] > 0.3:  # Umbral de similitud
+            results = scored_results[0][0]
             results.image_url = results.image_url.split(",")
         else:
             results = get_destination(query)
 
     return render(
-        request, "blog/destinations.html", {"results": results, "query": query}
+        request,
+        "blog/destinations.html",
+        {"results": results, "query": query, "corrected_place": results.name},
     )
 
 
@@ -52,6 +81,11 @@ def get_flights_api(request):
         departure, destination, departure_date, return_date, num_people
     )
     return JsonResponse({"flights": flights})
+
+
+def get_hotels_api(request):
+    hotels_list = get_hotel_list()
+    return JsonResponse({"hotels": hotels_list})
 
 
 def ollama(request):

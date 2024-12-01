@@ -39,7 +39,7 @@
       "country": "Japón",
       "city": "Tokio",
       "IATA": "NRT",
-      "airport": "Narita"
+      "airport": "Aeropuerto Internacional de Narita"
     },
     {
       "country": "Japón",
@@ -99,7 +99,7 @@
         "country": "España",
         "city": "Madrid",
         "IATA": "MAD",
-        "airport": "Adolfo Suárez Madrid-Barajas"
+        "airport": "Aeropuerto Adolfo Suárez Madrid - Barajas"
     }
   ]
   
