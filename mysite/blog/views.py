@@ -63,11 +63,16 @@ def search_destinations(request):
             results.image_url = results.image_url.split(",")
         else:
             results = get_destination(query)
+        query_info = {}
+        query_info["departure_date"] = departure_date
+        query_info["return_date"] = return_date
+        query_info["num_people"] = num_people
+        print(query_info)
 
     return render(
         request,
         "blog/destinations.html",
-        {"results": results, "query": query, "corrected_place": results.name},
+        {"results": results, "query": query, "corrected_place": results.name, "query_info": query_info},
     )
 
 

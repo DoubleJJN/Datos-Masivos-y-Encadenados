@@ -25,13 +25,13 @@
                 </div>  
 
                 <div class="search-container" style="justify-content: center; align-items: center;">
-                    <button class="toggle-fields">More Options</button>
+                    <button class="toggle-fields" type="button">More Options</button>
                 </div>
-                    <div class="additional-fields">
-                        <input type="number" name="num_people" placeholder="Number of people" min="1">
-                        <input type="date" name="departure_date" placeholder="Arrival Date">
-                        <input type="date" name="return_date" placeholder="Departure Date">
-                    </div>
+                <div class="additional-fields">
+                    <input type="number" name="num_people" placeholder="Number of people" min="1" value="1">
+                    <input type="date" name="departure_date" placeholder="Arrival Date" value="2025-01-04">
+                    <input type="date" name="return_date" placeholder="Departure Date" value="2025-01-11">
+                </div>
             </form>
         {% comment %} <a href="#destinations" class="btn">Start Exploring</a> {% endcomment %}
     </section>

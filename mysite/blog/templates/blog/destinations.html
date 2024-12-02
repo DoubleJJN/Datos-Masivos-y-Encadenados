@@ -48,12 +48,11 @@
                 {% endfor %}
             </div>
         </div>
-
         <div class="card shadow-sm" style="flex: 1; margin: 0 20px; min-width: 48%; max-height: 400px;">
             <div class="card-body">
                 <h5 class="card-title custom-color"><strong>Mapa</strong></h5>
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.47827054537!2d-3.8443426076978033!3d40.438098610155286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997800a3c81%3A0xc436dec1618c2269!2sMadrid!5e0!3m2!1ses!2ses!4v1731025880191!5m2!1ses!2ses"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41999.418031852656!2d2.3058356607654438!3d48.85890398103012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2zUGFyw61zLCBGcmFuY2lh!5e0!3m2!1ses!2ses!4v1733155172491!5m2!1ses!2ses"
                     width="100%" 
                     {% comment %} height="300"  {% endcomment %}
                     style="border:0; flex:1;" 
@@ -69,7 +68,7 @@
         <!-- Mapa de Google Maps -->
         <div class="card shadow-sm" style="flex: 1; margin: 0 20px;">
             <div class="card-body">
-                <h5 class="card-title custom-color"><strong>Vuelos hacia {{ results.name }}</strong></h5>
+                <h5 class="card-title custom-color"><strong>Hoteles en {{ results.name }}</strong></h5>
                 <div class="loader" id="loader_hotels"></div>
                 <div id="result_hotels" class="row row-cols-1 g-3" style="max-height: 45vh; overflow-y: auto;"></div>
             </div>
@@ -96,10 +95,20 @@
         style="color: #ba95f6;" {% endcomment %}
         <div class="card shadow-sm" style="flex: 1; margin: 0 20px;">
             <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
-                <h5 class="card-title custom-color"><strong>Hoteles en {{ results.name }}</strong></h5>
+                {% comment %} <h5 class="card-title custom-color"><strong>Vuelos a {{ results.name }} | Ida: {{query_info.departure_date}} | Vuelta: {{query_info.return_date}} | Personas: {{query_info.num_people}}</strong></h5> {% endcomment %}
                 <!-- Contenedor con scroll -->
+                <h5 class="card-title custom-color text-center py-3">
+                    <strong class="text-primary">
+                        ✈️ Vuelos a <span class="text-uppercase">{{ results.name }}</span> 
+                    </strong>
+                    <br>
+                    <small>
+                        Ida: {{ query_info.departure_date }} | Vuelta: {{ query_info.return_date }} | 
+                        Personas: {{ query_info.num_people }}
+                    </small>
+                </h5>
                     <div class="loader" id="loader_flights"></div>
-                    <div id="result_flights" class="row row-cols-1 g-3" style="max-height: 45vh; overflow-y: auto;"></div>
+                    <div id="result_flights" class="row row-cols-1 g-3" style="max-height: 40vh; overflow-y: auto;"></div>
                 </div>
             </div>
         </div>            
