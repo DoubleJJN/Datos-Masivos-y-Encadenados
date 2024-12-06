@@ -12,6 +12,7 @@ from .utils import (
 from django.shortcuts import render
 from django.http import HttpResponse
 from difflib import SequenceMatcher
+from .script.seguridad_del_pais import obtener_datos_seguridad  # type: ignore # Importa la función
 
 
 def index(request):
@@ -63,6 +64,9 @@ def search_destinations(request):
             results.image_url = results.image_url.split(",")
         else:
             results = get_destination(query)
+            
+        datos_seguridad = obtener_datos_seguridad(query)
+
         query_info = {}
         query_info["departure_date"] = departure_date
         query_info["return_date"] = return_date
@@ -72,7 +76,7 @@ def search_destinations(request):
     return render(
         request,
         "blog/destinations.html",
-        {"results": results, "query": query, "corrected_place": results.name, "query_info": query_info},
+        {"results": results, "query": query, "corrected_place": results.name, "query_info": query_info, "datos_seguridad": datos_seguridad},
     )
 
 

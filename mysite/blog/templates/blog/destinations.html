@@ -49,17 +49,32 @@
             </div>
         </div>
         <div class="card shadow-sm" style="flex: 1; margin: 0 20px; min-width: 48%; max-height: 400px;">
-            <div class="card-body">
-                <h5 class="card-title custom-color"><strong>Mapa</strong></h5>
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41999.418031852656!2d2.3058356607654438!3d48.85890398103012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2zUGFyw61zLCBGcmFuY2lh!5e0!3m2!1ses!2ses!4v1733155172491!5m2!1ses!2ses"
-                    width="100%" 
-                    {% comment %} height="300"  {% endcomment %}
-                    style="border:0; flex:1;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            <div class="card-body" style="overflow-y: auto;">
+                <h5 class="card-title custom-color"><strong>Seguridad</strong></h5>
+                    <ul><strong>Porcentaje de Seguridad:</strong> {{ datos_seguridad.porcentaje|join:", " }}</ul>
+                    <ul><strong>Índice de Seguridad:</strong> {{ datos_seguridad.safety|join:", " }}</ul>
+                    <ul><strong>Sentimiento del Usuario:</strong> {{ datos_seguridad.user_sentiment|join:", " }}</ul>
+                    <ul><strong>Ciudades Seguras del país:</strong> 
+                        <ul>
+                            {% for city  in datos_seguridad.safety_city_green%}
+                                <li>{{ city }}</li>
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                    <ul><strong>Ciudades con Riesgo del país    :</strong> 
+                        <ul>
+                            {% for city in datos_seguridad.safety_city_orange %}
+                                <li>{{ city }}</li>
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                    <ul><strong>Advertencias:</strong>
+                        <ul>
+                            {% for warning in datos_seguridad.warnings %}
+                                <li>{{ warning }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
             </div>
         </div>
     </div class="content">
