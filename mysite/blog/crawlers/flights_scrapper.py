@@ -73,11 +73,10 @@ class FlightsScrapper:
         return None
 
     def get_airports_by_country(country_name, airports_data):
-        return [
-            airport
-            for airport in airports_data
-            if airport["country"].lower() == country_name.lower()
-        ]
+        for airport in airports_data:
+            if airport["country"].lower() == country_name.lower():
+                return airport
+        return None
 
     # Construir la URL de búsqueda
 
@@ -90,6 +89,10 @@ class FlightsScrapper:
         arrival_airport = FlightsScrapper.get_airport_by_city(
             arrival_city, self.airports_data
         )
+        if not arrival_airport:
+            arrival_airport = FlightsScrapper.get_airports_by_country(
+                arrival_city, self.airports_data
+            )
 
         if not departure_airport or not arrival_airport:
             raise ValueError(

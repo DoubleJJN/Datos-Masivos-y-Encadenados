@@ -100,6 +100,12 @@
         "city": "Madrid",
         "IATA": "MAD",
         "airport": "Aeropuerto Adolfo Suárez Madrid - Barajas"
+    },
+    {
+        "country": "Marruecos",
+        "city": "Casablanca",
+        "IATA": "CMN",
+        "airport": "Aeropuerto Internacional Mohammed V"
     }
   ]
   

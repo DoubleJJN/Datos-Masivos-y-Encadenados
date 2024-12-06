@@ -12,6 +12,7 @@ from .utils import (
 from django.shortcuts import render
 from django.http import HttpResponse
 from difflib import SequenceMatcher
+import requests
 
 
 def index(request):
@@ -107,3 +108,10 @@ def ollama_query_api(request):
 def get_all_destinations_v(request):
     results = get_all_destinations()
     return results
+
+def map(request):
+    MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibWF0enVsbCIsImEiOiJjbTRjbnhjNGYwNzZwMmxxcDdhcjNkenJqIn0.j1gK6McQfLPZNT84sbi_yw"
+    place = request.GET.get("place")
+    return render(request, "blog/map.html", {"mapbox_access_token": MAPBOX_ACCESS_TOKEN, "country": place})
+
+
