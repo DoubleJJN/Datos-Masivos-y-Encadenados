@@ -1,167 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>{{ results.name }}</title>
     {% load static %}
     {% load django_bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="icon" type="image/png" href="{% static 'images/Travelia_Logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="icon" type="image/png" href="{% static 'images/Travelia_Logo.png' %}" />
     <script>
-        window.correctedPlace = "{{ corrected_place|escapejs }}";
-    </script>    
+      window.correctedPlace = '{{ corrected_place|escapejs }}'
+    </script>
     <script src="{% static 'js/scripts.js' %}"></script>
     <style>
-        .content {
-            display: flex;
-            justify-content: space-evenly;
-            margin-top: 20px;
-        }
-
-        .carousel-item img {
-            margin-left: 20px;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            max-width: 100%;
-        }
-
-        .map, .info {
-            margin: 20px auto;
-            max-width: 900px;
-        }
+      .content {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 20px;
+      }
+      
+      .carousel-item img {
+        margin-left: 20px;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+        max-width: 100%;
+      }
+      
+      .map,
+      .info {
+        margin: 20px auto;
+        max-width: 900px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     {% include 'blog/sections/navbar.html' %}
 
     <!-- Carrusel de imágenes -->
     <div class="content">
-        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel" style="max-width: 40%; margin: 0 10px;">
-            <div class="carousel-inner">
-                {% for image in results.image_url %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3000" style="display: flex;">
-                        <img src="{{ image }}" class="d-block" style="flex: 1;" alt="Foto">
-                    </div>
-                {% endfor %}
+      <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel" style="max-width: 40%; margin: 0 10px;">
+        <div class="carousel-inner">
+          {% for image in results.image_url %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3000" style="display: flex;">
+              <img src="{{ image }}" class="d-block" style="flex: 1;" alt="Foto" />
             </div>
+          {% endfor %}
         </div>
-        <div class="card shadow-sm" style="flex: 1; margin: 0 10px; max-height: 400px;">
-            <div class="card-body">
-                <h5 class="card-title custom-color"><strong>Mapa</strong></h5>
-                <iframe 
-                    src="/map?place={{ results.name }}"
-                    width="100%" 
-                    style="border:0; flex:1;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div> 
-        <div class="card shadow-sm" style="flex: 1; margin: 0 10px; max-height: 400px;">
-            <div class="card-body custom-color p-3" style="overflow-y: auto; max-height: 97%;">
-                <div class="card-header bg-primary text-white text-center">
-                    <h5 class="card-title mb-0"><strong>Seguridad</strong></h5>
-                </div>
-                <p><strong>Porcentaje de Seguridad:</strong> 
-                    <span class="badge bg-success">{{ datos_seguridad.porcentaje|join:", " }}</span>
-                </p>
-                <p><strong>Índice de Seguridad:</strong> 
-                    <span class="badge bg-info text-dark">{{ datos_seguridad.safety|join:", " }}</span>
-                </p>
-                <p><strong>Sentimiento del Usuario:</strong> 
-                    <span class="badge bg-warning text-dark">{{ datos_seguridad.user_sentiment|join:", " }}</span>
-                </p>
-                
-                <hr>
-                
-                <p><strong>Ciudades más seguras del País:</strong></p>
-                <ul class="list-group mb-3">
-                    {% for city in datos_seguridad.safety_city_green %}
-                        <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
-                            {{ city }}
-                            <i class="bi bi-check-circle text-success"></i>
-                        </li>
-                    {% endfor %}
-                </ul>
-                
-                <p><strong>Ciudades con más riesgo del País:</strong></p>
-                <ul class="list-group mb-3">
-                    {% for city in datos_seguridad.safety_city_orange %}
-                        <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
-                            {{ city }}
-                            <i class="bi bi-exclamation-circle text-warning"></i>
-                        </li>
-                    {% endfor %}
-                </ul>
-                
-                <p><strong>Advertencias:</strong></p>
-                <ul class="list-group">
-                    {% for warning in datos_seguridad.warnings %}
-                        <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
-                            {{ warning }}
-                            <i class="bi bi-x-circle"></i>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
+      </div>
+      <div class="card shadow-sm" style="flex: 1; margin: 0 10px; max-height: 400px;">
+        <div class="card-body">
+          <h5 class="card-title custom-color"><strong>Mapa</strong></h5>
+          <iframe src="/map?place={{ results.name }}" width="100%" style="border:0; flex:1;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-    </div class="content">
-    <!-- Sección de contenido con mapa e información relevante -->
-    <div class="content" style="max-height: 50vh;">
-        <!-- Mapa de Google Maps -->
-        <div class="card shadow-sm" style="flex: 1; margin: 0 10px;">
-            <div class="card-body">
-                <h5 class="card-title custom-color"><strong>Hoteles en {{ results.name }}</strong></h5>
-                <div class="loader" id="loader_hotels"></div>
-                <div id="result_hotels" class="row row-cols-1 g-3" style="max-height: 45vh; overflow-y: auto;"></div>
-            </div>
-        </div>
+      </div>
+      <div class="card shadow-sm" style="flex: 1; margin: 0 10px; max-height: 400px;">
+        <div class="card-body custom-color p-3" style="overflow-y: auto; max-height: 97%;">
+          <div class="card-header bg-primary text-white text-center">
+            <h5 class="card-title mb-0"><strong>Seguridad</strong></h5>
+          </div>
+          <p>
+            <strong>Porcentaje de Seguridad:</strong>
+            <span class="badge bg-success">{{ datos_seguridad.porcentaje|join:', ' }}</span>
+          </p>
+          <p>
+            <strong>Índice de Seguridad:</strong>
+            <span class="badge bg-info text-dark">{{ datos_seguridad.safety|join:', ' }}</span>
+          </p>
+          <p>
+            <strong>Sentimiento del Usuario:</strong>
+            <span class="badge bg-warning text-dark">{{ datos_seguridad.user_sentiment|join:', ' }}</span>
+          </p>
 
-        <div class="card shadow-sm" style="flex: 1; margin: 0 10px;">
-            <div class="card-body">
-                <h5 class="card-title custom-color"><strong>Información sobre {{ results.name }}</strong></h5>
-                <div style="height: 45vh; overflow-y: auto; overflow-x: hidden;" style="display: flex;">
-                    <p><strong class="custom-color">País:</strong> {{ results.country }}</p>
-                    <p><strong class="custom-color">Ciudad:</strong> {{ results.city }}</p>
-                    <p><strong class="custom-color">Descripción:</strong> {{ results.description }}</p>
-                    <p><strong class="custom-color">Moneda:</strong> {{ results.currency }}</p>
-                    <p><strong class="custom-color">Huso horario:</strong> {{ results.timezone }}</p>
-                    <p><strong class="custom-color">Idioma:</strong> {{ results.language }}</p>
-                    <div class="loader" id="loader_ollama"></div>
-                    <div id="result_ollama" style="overflow: hidden; flex: 1; max-height: 45vh;"></div>
-                </div>
-            </div>
+          <hr />
+
+          <p>
+            <strong>Ciudades más seguras del País:</strong>
+          </p>
+          <ul class="list-group mb-3">
+            {% for city in datos_seguridad.safety_city_green %}
+              <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+                {{ city }}
+                <i class="bi bi-check-circle text-success"></i>
+              </li>
+            {% endfor %}
+          </ul>
+
+          <p>
+            <strong>Ciudades con más riesgo del País:</strong>
+          </p>
+          <ul class="list-group mb-3">
+            {% for city in datos_seguridad.safety_city_orange %}
+              <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+                {{ city }}
+                <i class="bi bi-exclamation-circle text-warning"></i>
+              </li>
+            {% endfor %}
+          </ul>
+
+          <p>
+            <strong>Advertencias:</strong>
+          </p>
+          <ul class="list-group">
+            {% for warning in datos_seguridad.warnings %}
+              <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
+                {{ warning }}
+                <i class="bi bi-x-circle"></i>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
-        {% comment %} style="color: #ba95f6;"
-        style="color: #ba95f6;"
-        style="color: #ba95f6;"
-        style="color: #ba95f6;" {% endcomment %}
-        <div class="card shadow-sm" style="flex: 1; margin: 0 10px;">
-            <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
-                {% comment %} <h5 class="card-title custom-color"><strong>Vuelos a {{ results.name }} | Ida: {{query_info.departure_date}} | Vuelta: {{query_info.return_date}} | Personas: {{query_info.num_people}}</strong></h5> {% endcomment %}
-                <!-- Contenedor con scroll -->
-                <h5 class="card-title custom-color text-center py-3">
-                    <strong class="text-primary">
-                        ✈️ Vuelos a <span class="text-uppercase">{{ results.name }}</span> 
-                    </strong>
-                    <br>
-                    <small>
-                        Ida: {{ query_info.departure_date }} | Vuelta: {{ query_info.return_date }} | 
-                        Personas: {{ query_info.num_people }}
-                    </small>
-                </h5>
-                    <div class="loader" id="loader_flights"></div>
-                    <div id="result_flights" class="row row-cols-1 g-3" style="max-height: 40vh; overflow-y: auto;"></div>
-                </div>
-            </div>
-        </div>            
+      </div>
     </div>
+    <!-- Sección de contenido con mapa e información relevante -->
+    <div class="content" style="max-height: 45vh;">
+      <!-- Mapa de Google Maps -->
+      <div class="card shadow-sm" style="flex: 1; margin: 0 10px;">
+        <div class="card-body">
+          <h5 class="card-title custom-color"><strong>Hoteles en {{ results.name }}</strong></h5>
+          <div class="loader" id="loader_hotels"></div>
+          <div id="result_hotels" class="row row-cols-1 g-3" style="max-height: 43vh; overflow-y: auto;"></div>
+        </div>
+      </div>
 
+      <div class="card shadow-sm" style="flex: 1; margin: 0 10px;">
+        <div class="card-body mb-4">
+          <h5 class="card-title custom-color"><strong>Información sobre {{ results.name }}</strong></h5>
+          <div style="height: 45vh; overflow-y: auto; overflow-x: hidden;" style="display: flex;">
+            <p>
+              <strong class="custom-color">País:</strong> {{ results.country }}
+            </p>
+            <p>
+              <strong class="custom-color">Ciudad:</strong> {{ results.city }}
+            </p>
+            <p>
+              <strong class="custom-color">Descripción:</strong> {{ results.description }}
+            </p>
+            <p>
+              <strong class="custom-color">Moneda:</strong> {{ results.currency }}
+            </p>
+            <p>
+              <strong class="custom-color">Huso horario:</strong> {{ results.timezone }}
+            </p>
+            <p>
+              <strong class="custom-color">Idioma:</strong> {{ results.language }}
+            </p>
+            <div class="loader" id="loader_ollama"></div>
+            <div id="result_ollama" style="overflow: hidden; flex: 1; max-height: 43vh;"></div>
+          </div>
+        </div>
+      </div>
+      {% comment %}style="color: #ba95f6;" style="color: #ba95f6;" style="color: #ba95f6;" style="color: #ba95f6;"{% endcomment %}
+      <div class="card shadow-sm " style="flex: 1; margin: 0 10px;">
+        <div class="card-body mb-4" style="display: flex; flex-direction: column; flex: 1;">
+          {% comment %} <h5 class="card-title custom-color"><strong>Vuelos a {{ results.name }} | Ida: {{ query_info.departure_date }} | Vuelta: {{ query_info.return_date }} | Personas: {{ query_info.num_people }}</strong></h5> {% endcomment %}
+          <!-- Contenedor con scroll -->
+          <h5 class="card-title custom-color text-center py-3">
+            <strong class="text-primary">✈️ Vuelos a <span class="text-uppercase">{{ results.name }}</span></strong>
+            <br />
+            <small>Ida: {{ query_info.departure_date }} | Vuelta: {{ query_info.return_date }} | Personas: {{ query_info.num_people }}</small>
+          </h5>
+          <div class="loader" id="loader_flights"></div>
+          <div id="result_flights" class="row row-cols-1 g-3" style="max-height: 40vh; overflow-y: auto;"></div>
+        </div>
+      </div>
+    </div>
     <!-- Footer -->
     {% include 'blog/sections/footer.html' %}
-</body>
+  </body>
 </html>
