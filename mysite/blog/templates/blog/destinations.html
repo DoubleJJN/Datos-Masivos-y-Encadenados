@@ -39,7 +39,7 @@
 
     <!-- Carrusel de imágenes -->
     <div class="content">
-        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel" style="max-width: 40%; margin: 0 10px;">
             <div class="carousel-inner">
                 {% for image in results.image_url %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="3000" style="display: flex;">
@@ -48,51 +48,72 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="card shadow-sm" style="flex: 1; margin: 0 20px; min-width: 48%; max-height: 400px;">
+        <div class="card shadow-sm" style="flex: 1; margin: 0 10px; max-height: 400px;">
             <div class="card-body">
                 <h5 class="card-title custom-color"><strong>Mapa</strong></h5>
                 <iframe 
                     src="/map?place={{ results.name }}"
                     width="100%" 
-                    {% comment %} height="300"  {% endcomment %}
                     style="border:0; flex:1;" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
-            <div class="card-body" style="overflow-y: auto;">
-                <h5 class="card-title custom-color"><strong>Seguridad</strong></h5>
-                    <ul><strong>Porcentaje de Seguridad:</strong> {{ datos_seguridad.porcentaje|join:", " }}</ul>
-                    <ul><strong>Índice de Seguridad:</strong> {{ datos_seguridad.safety|join:", " }}</ul>
-                    <ul><strong>Sentimiento del Usuario:</strong> {{ datos_seguridad.user_sentiment|join:", " }}</ul>
-                    <ul><strong>Ciudades Seguras del país:</strong> 
-                        <ul>
-                            {% for city  in datos_seguridad.safety_city_green%}
-                                <li>{{ city }}</li>
-                            {% endfor %}
-                        </ul>
-                    </ul>
-                    <ul><strong>Ciudades con Riesgo del país    :</strong> 
-                        <ul>
-                            {% for city in datos_seguridad.safety_city_orange %}
-                                <li>{{ city }}</li>
-                            {% endfor %}
-                        </ul>
-                    </ul>
-                    <ul><strong>Advertencias:</strong>
-                        <ul>
-                            {% for warning in datos_seguridad.warnings %}
-                                <li>{{ warning }}</li>
-                            {% endfor %}
-                        </ul>
-                    </li>
+            </div>
+        </div> 
+        <div class="card shadow-sm" style="flex: 1; margin: 0 10px; max-height: 400px;">
+            <div class="card-body custom-color p-3" style="overflow-y: auto; max-height: 97%;">
+                <div class="card-header bg-primary text-white text-center">
+                    <h5 class="card-title mb-0"><strong>Seguridad</strong></h5>
+                </div>
+                <p><strong>Porcentaje de Seguridad:</strong> 
+                    <span class="badge bg-success">{{ datos_seguridad.porcentaje|join:", " }}</span>
+                </p>
+                <p><strong>Índice de Seguridad:</strong> 
+                    <span class="badge bg-info text-dark">{{ datos_seguridad.safety|join:", " }}</span>
+                </p>
+                <p><strong>Sentimiento del Usuario:</strong> 
+                    <span class="badge bg-warning text-dark">{{ datos_seguridad.user_sentiment|join:", " }}</span>
+                </p>
+                
+                <hr>
+                
+                <p><strong>Ciudades más seguras del País:</strong></p>
+                <ul class="list-group mb-3">
+                    {% for city in datos_seguridad.safety_city_green %}
+                        <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+                            {{ city }}
+                            <i class="bi bi-check-circle text-success"></i>
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+                <p><strong>Ciudades con más riesgo del País:</strong></p>
+                <ul class="list-group mb-3">
+                    {% for city in datos_seguridad.safety_city_orange %}
+                        <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+                            {{ city }}
+                            <i class="bi bi-exclamation-circle text-warning"></i>
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+                <p><strong>Advertencias:</strong></p>
+                <ul class="list-group">
+                    {% for warning in datos_seguridad.warnings %}
+                        <li class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
+                            {{ warning }}
+                            <i class="bi bi-x-circle"></i>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div class="content">
     <!-- Sección de contenido con mapa e información relevante -->
     <div class="content" style="max-height: 50vh;">
         <!-- Mapa de Google Maps -->
-        <div class="card shadow-sm" style="flex: 1; margin: 0 20px;">
+        <div class="card shadow-sm" style="flex: 1; margin: 0 10px;">
             <div class="card-body">
                 <h5 class="card-title custom-color"><strong>Hoteles en {{ results.name }}</strong></h5>
                 <div class="loader" id="loader_hotels"></div>
@@ -100,7 +121,7 @@
             </div>
         </div>
 
-        <div class="card shadow-sm" style="flex: 1; margin: 0 20px;">
+        <div class="card shadow-sm" style="flex: 1; margin: 0 10px;">
             <div class="card-body">
                 <h5 class="card-title custom-color"><strong>Información sobre {{ results.name }}</strong></h5>
                 <div style="height: 45vh; overflow-y: auto; overflow-x: hidden;" style="display: flex;">
@@ -119,7 +140,7 @@
         style="color: #ba95f6;"
         style="color: #ba95f6;"
         style="color: #ba95f6;" {% endcomment %}
-        <div class="card shadow-sm" style="flex: 1; margin: 0 20px;">
+        <div class="card shadow-sm" style="flex: 1; margin: 0 10px;">
             <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
                 {% comment %} <h5 class="card-title custom-color"><strong>Vuelos a {{ results.name }} | Ida: {{query_info.departure_date}} | Vuelta: {{query_info.return_date}} | Personas: {{query_info.num_people}}</strong></h5> {% endcomment %}
                 <!-- Contenedor con scroll -->
