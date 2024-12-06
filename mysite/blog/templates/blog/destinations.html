@@ -60,6 +60,32 @@
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
+            <div class="card-body" style="overflow-y: auto;">
+                <h5 class="card-title custom-color"><strong>Seguridad</strong></h5>
+                    <ul><strong>Porcentaje de Seguridad:</strong> {{ datos_seguridad.porcentaje|join:", " }}</ul>
+                    <ul><strong>Índice de Seguridad:</strong> {{ datos_seguridad.safety|join:", " }}</ul>
+                    <ul><strong>Sentimiento del Usuario:</strong> {{ datos_seguridad.user_sentiment|join:", " }}</ul>
+                    <ul><strong>Ciudades Seguras del país:</strong> 
+                        <ul>
+                            {% for city  in datos_seguridad.safety_city_green%}
+                                <li>{{ city }}</li>
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                    <ul><strong>Ciudades con Riesgo del país    :</strong> 
+                        <ul>
+                            {% for city in datos_seguridad.safety_city_orange %}
+                                <li>{{ city }}</li>
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                    <ul><strong>Advertencias:</strong>
+                        <ul>
+                            {% for warning in datos_seguridad.warnings %}
+                                <li>{{ warning }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
             </div>
         </div>
     </div class="content">
