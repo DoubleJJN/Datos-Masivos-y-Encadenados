@@ -4,7 +4,7 @@ import unicodedata
 import json
 import re
 from .crawler import Crawler
-from ..env import API_KEY
+from decouple import config
 
 
 class WikipediaCrawler(Crawler):
@@ -52,7 +52,7 @@ class WikipediaCrawler(Crawler):
     def get_imgs(self, place_english: str) -> str:
         photos = []
         URL = "https://api.pexels.com/v1/search"
-        headers = {"Authorization": API_KEY}
+        headers = {"Authorization": config("API_KEY")}
         params = {"query": place_english, "per_page": 3, "orientation": "landscape"}
         response = requests.get(URL, headers=headers, params=params)
 

@@ -2,14 +2,13 @@ import sqlite3
 import requests
 from tqdm import tqdm
 from time import sleep
-
-API_KEY = "jeXvP9Un4E2RpgrYJYZFRB8XAMCMiuyVOY9fv6DHY5BZoR08HVghIbMS"
+from decouple import config
 
 
 def get_imgs(place_english: str) -> str:
     photos = []
     URL = "https://api.pexels.com/v1/search"
-    headers = {"Authorization": API_KEY}
+    headers = {"Authorization": config("API_KEY")}
     params = {"query": place_english, "per_page": 3, "orientation": "landscape"}
     response = requests.get(URL, headers=headers, params=params)
 

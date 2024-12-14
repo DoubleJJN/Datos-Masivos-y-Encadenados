@@ -3,7 +3,6 @@ import requests
 from tqdm import tqdm
 from time import sleep
 
-API_KEY = "jeXvP9Un4E2RpgrYJYZFRB8XAMCMiuyVOY9fv6DHY5BZoR08HVghIbMS"
 
 
 def clean(text: str) -> str:

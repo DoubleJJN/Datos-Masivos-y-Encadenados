@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 
 # Country, city or main destination
 class Destination(models.Model):
-    name = models.CharField(max_length=100)
-    english_name = models.CharField(max_length=100, blank=True, null=True)
-    country = models.CharField(max_length=100)
-    description = models.TextField()
-    currency = models.CharField(max_length=10)
-    language = models.CharField(max_length=50)
-    timezone = models.CharField(max_length=10)
-    image_url = models.URLField(blank=True, null=True)
+    name = models.CharField(max_length=200)
+    english_name = models.CharField(max_length=200, blank=True, null=True)
+    country = models.CharField(max_length=200)
+    description = models.TextField(max_length=1000)
+    currency = models.CharField(max_length=200)
+    language = models.CharField(max_length=200)
+    timezone = models.CharField(max_length=200)
+    image_url = models.URLField(blank=True, null=True, max_length=500)
 
     def __str__(self):
         return f"{self.name}, {self.city}, {self.country}"
