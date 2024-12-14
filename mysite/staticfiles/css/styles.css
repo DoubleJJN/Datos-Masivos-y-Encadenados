@@ -1,0 +1,321 @@
+/* Material Design Colors */
+:root {
+    --primary-color: #6200ea;
+    --text-color: #ffffffb6;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    /*Ligh mode*/
+    /* --primary-light: #9c47ff; */
+    /* --primary-dark: #0a00b6; */
+    /* --background-color: #f5f5f5; */
+    /* --item-background: #fff; */
+
+    /*Dark mode*/
+    --background-color: #1e2021;
+    --item-background: #363b3d;
+    --primary-dark: #5f96ff;
+    --primary-light: #4b00a1;
+    --hover-light: rgba(47, 25, 49, 0.2);
+
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+a, u {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.navbar a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin: 0 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    height: 50vh;
+    background: linear-gradient(var(--primary-light), var(--primary-dark));
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    background-color: var(--primary-light);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.5s;
+}
+
+
+.search-container {
+    margin: 20px auto;
+    max-width: 600px;
+    /* Limit the width of the search bar */
+    min-width: 40vw;
+    /* Minimum width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-container form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* Full width for the search form */
+}
+
+.search-container input[type="text"] {
+    flex: 1;
+    /* Allow the input to take full width */
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid #fff;
+    border-radius: 5px 0 0 5px;
+    /* Rounded corners for the left side */
+}
+
+.search-container button {
+    padding: 15px 20px;
+    background: var(--primary-light);
+    /* Primary color */
+    color: var(--text-color);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    /* Rounded corners for the right side */
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.search-container button:hover {
+    background-color: var(--primary-dark);
+    /* Darker shade on hover */
+}
+
+.toggle-fields {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 5px !important;
+}
+
+/* Additional Fields */
+.additional-fields {
+    margin-top: 10px;
+    /* Espacio entre la barra de búsqueda y los campos adicionales */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.75s ease, max-height 0.75s ease;
+}
+
+.additional-fields.show {
+    opacity: 1;
+    /* Totalmente visible */
+    max-height: 200px;
+    /* Ajusta la altura máxima según tus campos */
+}
+
+.additional-fields input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* Borde claro para los campos */
+    border-radius: 5px;
+    min-width: 150px;
+    /* Ancho mínimo de los campos de entrada */
+}
+
+/* Sections */
+.section {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-dark);
+}
+
+/* Cards Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: var(--item-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    overflow: hidden;
+    transition: transform 0.5s;
+}
+
+.data-card {
+    background-color: var(--shadow-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--background-color);
+    overflow: hidden;
+    transition: transform 0.1s, background-color 0.1s ease-in;
+    will-change: transform, background-color;
+}
+
+.card-body {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-map {
+    background-color: var(--item-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.5s;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.data-card:hover {
+    transform: scale3d(1.01, 1.01, 1.01);
+    background-color: var(--hover-light);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1rem;
+    text-align: left;
+    height: 90%;
+}
+
+
+.card-content h3 {
+    color: var(--primary-dark);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.pre{
+    white-space: pre-wrap;
+    color: var(--text-color);
+}
+
+.loader {
+            display: none;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 3s linear infinite;
+            margin: 20px auto;
+            z-index: 1000;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            70% { transform: rotate(720deg); }
+            100% { transform: rotate(1440deg); }
+
+        }
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: aqua;
+}
+
+
+/* .custom-color {
+    color: #9e6af2;
+} */

@@ -6,3 +6,5 @@ beautifulsoup4
 tqdm
 selenium
 webdriver_manager
+psycopg[binary]
+whitenoise
