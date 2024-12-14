@@ -1,13 +1,13 @@
 {
     "builds": [{
-      "src": "netflixuax/wsgi.py",
+      "src": "mysite/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12.5" }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.13.0" }
     }],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "netflixuax/wsgi.py"
+        "dest": "mysite/wsgi.py"
       }
     ]
 }
