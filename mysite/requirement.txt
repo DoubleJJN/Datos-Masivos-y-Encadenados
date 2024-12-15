@@ -8,3 +8,4 @@ selenium
 webdriver_manager
 psycopg[binary]
 whitenoise
+python-decouple
