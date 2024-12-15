@@ -7,9 +7,10 @@ from .models import Destination
 from .crawlers.flights_scrapper import FlightsScrapper
 import random
 import os
+from decouple import config
 
 query_template = Template(
-    "Describe en dos frases en texto plano $destino para un turista que visita por primera vez."
+    "Describe en texto plano $destino para un turista que visita por primera vez. No muy largo, pero tampoco muy corto."
 )
 
 flights_scrapper = FlightsScrapper()
@@ -27,6 +28,22 @@ def get_text(responses):
     return text
 
 
+
+def get_text_gemini(response):
+    text = ""
+    try:
+        nresponse = json.loads(response)
+        candidates = nresponse.get("candidates", [])
+        for candidate in candidates:
+            content = candidate.get("content", {})
+            parts = content.get("parts", [])
+            for part in parts:
+                text += part.get("text", "")
+    except json.JSONDecodeError as e:
+        print("Error parsing JSON:", response, e)
+    # print(text)
+    return text
+
 def query_ollama(query):
     query = (
         query_template.substitute(destino=query)
@@ -34,21 +51,22 @@ def query_ollama(query):
         else query_template.substitute(destino="París")
     )
     # 192.168.0.11
-    url = "http://localhost:11434/api/generate"
+    
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + config("GEMINI_API_KEY")
     headers = {"Content-Type": "application/json"}
-    data = {"model": "phi3", "prompt": query, "streaming": "False"}
+    data = { "contents": [ { "parts": [ { "text": query } ] } ] }
     print(query)
     try:
-        # Realizar la solicitud al servidor de Ollama
+        # Realizar la solicitud al servidor de Gemini
         data = json.dumps(data)
         response = requests.post(url, headers=headers, data=data)
         if response.status_code == 200:
-            result = get_text(response.content)
+            result = get_text_gemini(response.content)
         else:
             result = "Error Occurred:", response.text
         context = {"result": result}
     except requests.RequestException as e:
-        context = {"error": f"Error al conectar con Ollama: {e}"}
+        context = {"error": f"Error al conectar con Gemini: {e}"}
 
     return context
 
