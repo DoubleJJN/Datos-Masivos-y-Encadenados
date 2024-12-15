@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0006_alter_destination_currency_and_more'),
+        ("blog", "0006_alter_destination_currency_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='destination',
-            name='description',
+            model_name="destination",
+            name="description",
             field=models.TextField(max_length=1000),
         ),
     ]

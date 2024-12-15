@@ -4,40 +4,39 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0009_alter_destination_currency_and_more'),
+        ("blog", "0009_alter_destination_currency_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='destination',
-            name='country',
+            model_name="destination",
+            name="country",
             field=models.CharField(max_length=200),
         ),
         migrations.AlterField(
-            model_name='destination',
-            name='currency',
+            model_name="destination",
+            name="currency",
             field=models.CharField(max_length=200),
         ),
         migrations.AlterField(
-            model_name='destination',
-            name='english_name',
+            model_name="destination",
+            name="english_name",
             field=models.CharField(blank=True, max_length=200, null=True),
         ),
         migrations.AlterField(
-            model_name='destination',
-            name='language',
+            model_name="destination",
+            name="language",
             field=models.CharField(max_length=200),
         ),
         migrations.AlterField(
-            model_name='destination',
-            name='name',
+            model_name="destination",
+            name="name",
             field=models.CharField(max_length=200),
         ),
         migrations.AlterField(
-            model_name='destination',
-            name='timezone',
+            model_name="destination",
+            name="timezone",
             field=models.CharField(max_length=200),
         ),
     ]

@@ -28,7 +28,6 @@ def get_text(responses):
     return text
 
 
-
 def get_text_gemini(response):
     text = ""
     try:
@@ -44,6 +43,7 @@ def get_text_gemini(response):
     # print(text)
     return text
 
+
 def query_ollama(query):
     query = (
         query_template.substitute(destino=query)
@@ -51,10 +51,13 @@ def query_ollama(query):
         else query_template.substitute(destino="París")
     )
     # 192.168.0.11
-    
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + config("GEMINI_API_KEY")
+
+    url = (
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key="
+        + config("GEMINI_API_KEY")
+    )
     headers = {"Content-Type": "application/json"}
-    data = { "contents": [ { "parts": [ { "text": query } ] } ] }
+    data = {"contents": [{"parts": [{"text": query}]}]}
     print(query)
     try:
         # Realizar la solicitud al servidor de Gemini

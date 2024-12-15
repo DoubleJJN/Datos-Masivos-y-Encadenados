@@ -4,7 +4,6 @@ from tqdm import tqdm
 from time import sleep
 
 
-
 def clean(text: str) -> str:
     # remove any [n] from the text
     text = text.split("[")[0]

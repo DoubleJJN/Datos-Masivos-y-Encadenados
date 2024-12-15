@@ -65,7 +65,7 @@ def search_destinations(request):
             results.image_url = results.image_url.split(",")
         else:
             results = get_destination(query)
-            
+
         datos_seguridad = obtener_datos_seguridad(query)
 
         query_info = {}
@@ -77,7 +77,13 @@ def search_destinations(request):
     return render(
         request,
         "blog/destinations.html",
-        {"results": results, "query": query, "corrected_place": results.name, "query_info": query_info, "datos_seguridad": datos_seguridad},
+        {
+            "results": results,
+            "query": query,
+            "corrected_place": results.name,
+            "query_info": query_info,
+            "datos_seguridad": datos_seguridad,
+        },
     )
 
 
@@ -113,9 +119,12 @@ def get_all_destinations_v(request):
     results = get_all_destinations()
     return results
 
+
 def map(request):
     MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoibWF0enVsbCIsImEiOiJjbTRjbnhjNGYwNzZwMmxxcDdhcjNkenJqIn0.j1gK6McQfLPZNT84sbi_yw"
     place = request.GET.get("place")
-    return render(request, "blog/map.html", {"mapbox_access_token": MAPBOX_ACCESS_TOKEN, "country": place})
-
-
+    return render(
+        request,
+        "blog/map.html",
+        {"mapbox_access_token": MAPBOX_ACCESS_TOKEN, "country": place},
+    )
